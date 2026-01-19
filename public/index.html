@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SleekFind - Product Analyzer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="glass-nav">
+        <div class="logo">SleekFind</div>
+        <div class="nav-links">
+            <a href="#" onclick="showSection('home')">Home</a>
+            <a href="#" onclick="showSection('categories')">Categories</a>
+            <a href="#" class="btn-login" onclick="showLogin()">Login</a>
+            <a href="#" class="btn-signup" onclick="showSignup()">Sign Up</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Home Section -->
+        <section id="home" class="active-section">
+            <div class="hero">
+                <h1>Analyze. Compare. Buy Smart.</h1>
+                <p>Compare prices across Amazon, Flipkart, and more instantly.</p>
+                <div class="search-container">
+                    <input type="text" id="main-search" placeholder="Search for products (e.g., iPhone 15)"
+                        oninput="handleSearch(this.value)">
+                    <button class="search-btn">🔍</button>
+                </div>
+            </div>
+
+            <div class="categories-preview">
+                <h2>Popular Categories</h2>
+                <div class="category-grid">
+                    <div class="category-card" onclick="filterByCategory('mobiles')">
+                        <h3>📱 Mobiles</h3>
+                    </div>
+                    <div class="category-card" onclick="filterByCategory('laptops')">
+                        <h3>💻 Laptops</h3>
+                    </div>
+                    <div class="category-card" onclick="filterByCategory('watches')">
+                        <h3>⌚ Watches</h3>
+                    </div>
+                    <div class="category-card" onclick="filterByCategory('cameras')">
+                        <h3>📷 Cameras</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Results -->
+            <div id="product-results" class="product-grid"></div>
+        </section>
+
+        <!-- Categories Section -->
+        <section id="categories" class="hidden-section">
+            <div class="section-header">
+                <h2>Browse Categories</h2>
+                <input type="text" id="category-search" placeholder="Filter in category..."
+                    oninput="handleSearch(this.value)">
+            </div>
+            <div class="category-list">
+                <button onclick="filterByCategory('all')">All</button>
+                <button onclick="filterByCategory('mobiles')">Mobiles</button>
+                <button onclick="filterByCategory('laptops')">Laptops</button>
+                <button onclick="filterByCategory('watches')">Watches</button>
+                <button onclick="filterByCategory('audio')">Audio</button>
+            </div>
+            <div id="category-products" class="product-grid"></div>
+        </section>
+
+        <!-- Product View Section -->
+        <section id="product-view" class="hidden-section">
+            <button class="back-btn" onclick="showSection('home')">← Back to Browse</button>
+            <div class="product-detail-container">
+                <div class="product-detail-header">
+                    <img id="detail-image" src="" alt="Product Image">
+                    <div class="detail-info">
+                        <h1 id="detail-name">Product Name</h1>
+                        <p id="detail-desc">Product Description goes here.</p>
+                        <div class="specs-box">
+                            <h3>Specifications</h3>
+                            <ul id="detail-specs">
+                                <!-- Specs populated by JS -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="offers-title">Available offers:</h3>
+                <div id="seller-list-horizontal" class="seller-horizontal-scroll">
+                    <!-- Seller cards populated by JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content glass-card">
+            <span class="close" onclick="closeModal('login-modal')">&times;</span>
+            <h2>Welcome Back</h2>
+            <form id="login-form">
+                <input type="email" placeholder="Email" required id="login-email">
+                <input type="password" placeholder="Password" required id="login-password">
+                <button type="submit">Login</button>
+            </form>
+            <p>New here? <a href="#" onclick="switchModal('login-modal', 'signup-modal')">Create an account</a></p>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signup-modal" class="modal">
+        <div class="modal-content glass-card">
+            <span class="close" onclick="closeModal('signup-modal')">&times;</span>
+            <h2>Join SleekFind</h2>
+            <form id="signup-form">
+                <input type="text" placeholder="Username" required id="signup-username">
+                <input type="email" placeholder="Email" required id="signup-email">
+                <input type="password" placeholder="Password" required id="signup-password">
+                <button type="submit">Sign Up</button>
+            </form>
+            <p>Already have an account? <a href="#" onclick="switchModal('signup-modal', 'login-modal')">Login</a></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

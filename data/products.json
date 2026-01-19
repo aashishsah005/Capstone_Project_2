@@ -1,0 +1,1579 @@
+{
+  "products": [
+    {
+      "product_id": "samsung_galaxy_s24",
+      "product_name": "Samsung Galaxy S24",
+      "brand": "Samsung",
+      "base_image_url": "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=800&q=80",
+      "description": "The latest flagship from Samsung with AI-powered features, a stunning Dynamic AMOLED 2X display, and a pro-grade camera system.",
+      "variants": [
+        {
+          "variant_id": "s24_8_256",
+          "specifications": {
+            "RAM": "8GB",
+            "Storage": "256GB",
+            "Display": "6.2-inch Dynamic AMOLED 2X",
+            "Processor": "Snapdragon 8 Gen 3",
+            "Camera": "50MP + 12MP + 10MP"
+          },
+          "offers": [
+            {
+              "seller_name": "Appario Retail",
+              "price": 79999.0,
+              "rating": 4.8,
+              "rating_count": 1250,
+              "delivery_in_days": 2,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "GadgetZone",
+              "price": 78500.0,
+              "rating": 4.7,
+              "rating_count": 890,
+              "delivery_in_days": 3,
+              "is_trusted_seller": false
+            },
+            {
+              "seller_name": "TechMart India",
+              "price": 77999.0,
+              "rating": 4.5,
+              "rating_count": 650,
+              "delivery_in_days": 4,
+              "is_trusted_seller": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "iphone_15_pro",
+      "product_name": "iPhone 15 Pro",
+      "brand": "Apple",
+      "base_image_url": "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=800&q=80",
+      "description": "Features the powerful A17 Pro chip, a customizable Action button, and the most advanced Pro camera system ever on an iPhone.",
+      "variants": [
+        {
+          "variant_id": "ip15p_256",
+          "specifications": {
+            "RAM": "8GB",
+            "Storage": "256GB",
+            "Display": "6.1-inch Super Retina XDR",
+            "Processor": "A17 Pro",
+            "Camera": "48MP + 12MP + 12MP"
+          },
+          "offers": [
+            {
+              "seller_name": "iWorld",
+              "price": 133999.0,
+              "rating": 4.9,
+              "rating_count": 1800,
+              "delivery_in_days": 2,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Appario Retail",
+              "price": 134900.0,
+              "rating": 4.9,
+              "rating_count": 3400,
+              "delivery_in_days": 1,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Unicorn Store",
+              "price": 135000.0,
+              "rating": 4.8,
+              "rating_count": 950,
+              "delivery_in_days": 2,
+              "is_trusted_seller": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "google_pixel_8",
+      "product_name": "Google Pixel 8",
+      "brand": "Google",
+      "base_image_url": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=800&q=80",
+      "description": "A helpful phone by Google, with an amazing camera that uses AI to create perfect photos and a clean Android experience.",
+      "variants": [
+        {
+          "variant_id": "px8_128",
+          "specifications": {
+            "RAM": "8GB",
+            "Storage": "128GB",
+            "Display": "6.2-inch OLED",
+            "Processor": "Google Tensor G3",
+            "Camera": "50MP + 12MP"
+          },
+          "offers": [
+            {
+              "seller_name": "Flipkart Assured",
+              "price": 69999.0,
+              "rating": 4.6,
+              "rating_count": 1100,
+              "delivery_in_days": 2,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Reliance Digital",
+              "price": 71999.0,
+              "rating": 4.7,
+              "rating_count": 1800,
+              "delivery_in_days": 1,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Croma Store",
+              "price": 70499.0,
+              "rating": 4.7,
+              "rating_count": 890,
+              "delivery_in_days": 2,
+              "is_trusted_seller": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "oneplus_12",
+      "product_name": "OnePlus 12",
+      "brand": "OnePlus",
+      "base_image_url": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&q=80",
+      "description": "A performance flagship with a Snapdragon 8 Gen 3 processor, Hasselblad camera, and super-fast charging.",
+      "variants": [
+        {
+          "variant_id": "op12_12_256",
+          "specifications": {
+            "RAM": "12GB",
+            "Storage": "256GB",
+            "Display": "6.82-inch AMOLED",
+            "Processor": "Snapdragon 8 Gen 3",
+            "Camera": "50MP + 64MP + 48MP"
+          },
+          "offers": [
+            {
+              "seller_name": "OnePlus Official",
+              "price": 64999.0,
+              "rating": 4.8,
+              "rating_count": 2200,
+              "delivery_in_days": 2,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Amazon",
+              "price": 64999.0,
+              "rating": 4.7,
+              "rating_count": 3500,
+              "delivery_in_days": 1,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Appario Retail",
+              "price": 64499.0,
+              "rating": 4.8,
+              "rating_count": 1850,
+              "delivery_in_days": 2,
+              "is_trusted_seller": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "macbook_air_m2",
+      "product_name": "MacBook Air M2",
+      "brand": "Apple",
+      "base_image_url": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&q=80",
+      "description": "Thin and light laptop powered by the M2 chip, delivering exceptional performance and long battery life.",
+      "variants": [
+        {
+          "variant_id": "mba_m2_8_256",
+          "specifications": {
+            "RAM": "8GB",
+            "Storage": "256GB SSD",
+            "Display": "13.6-inch Liquid Retina",
+            "Processor": "Apple M2",
+            "Battery": "Up to 18 hours"
+          },
+          "offers": [
+            {
+              "seller_name": "Maple Store",
+              "price": 100900.0,
+              "rating": 4.9,
+              "rating_count": 980,
+              "delivery_in_days": 1,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Appario Retail",
+              "price": 99900.0,
+              "rating": 4.9,
+              "rating_count": 1500,
+              "delivery_in_days": 1,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "CompuIndia",
+              "price": 98999.0,
+              "rating": 4.6,
+              "rating_count": 450,
+              "delivery_in_days": 3,
+              "is_trusted_seller": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "dell_xps_15",
+      "product_name": "Dell XPS 15",
+      "brand": "Dell",
+      "base_image_url": "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&q=80",
+      "description": "A premium Windows laptop with 4K OLED display, powerful Intel processor and NVIDIA graphics for creatives.",
+      "variants": [
+        {
+          "variant_id": "xps15_16_512",
+          "specifications": {
+            "RAM": "16GB",
+            "Storage": "512GB SSD",
+            "Display": "15.6-inch 4K OLED",
+            "Processor": "Intel Core i7-13700H",
+            "Graphics": "NVIDIA RTX 4050"
+          },
+          "offers": [
+            {
+              "seller_name": "Cloudtail India",
+              "price": 185000.0,
+              "rating": 4.8,
+              "rating_count": 980,
+              "delivery_in_days": 2,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Appario Retail",
+              "price": 186500.0,
+              "rating": 4.8,
+              "rating_count": 1250,
+              "delivery_in_days": 1,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Dell India",
+              "price": 189990.0,
+              "rating": 4.7,
+              "rating_count": 450,
+              "delivery_in_days": 3,
+              "is_trusted_seller": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "lg_c3_55_oled",
+      "product_name": "LG C3 55-inch OLED TV",
+      "brand": "LG",
+      "base_image_url": "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=800&q=80",
+      "description": "Experience perfect blacks and infinite contrast with the LG OLED C3 and a9 AI Processor Gen6 for superb picture quality.",
+      "variants": [
+        {
+          "variant_id": "lg_c3_55_default",
+          "specifications": {
+            "Screen Size": "55-inch",
+            "Resolution": "4K UHD (3840x2160)",
+            "Panel Type": "OLED",
+            "Refresh Rate": "120Hz",
+            "Processor": "α9 AI Processor Gen6"
+          },
+          "offers": [
+            {
+              "seller_name": "LG India",
+              "price": 149990.0,
+              "rating": 4.9,
+              "rating_count": 250,
+              "delivery_in_days": 3,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Reliance Digital",
+              "price": 152000.0,
+              "rating": 4.8,
+              "rating_count": 400,
+              "delivery_in_days": 2,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "ElectroHub",
+              "price": 148500.0,
+              "rating": 4.6,
+              "rating_count": 180,
+              "delivery_in_days": 4,
+              "is_trusted_seller": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "sony_wh_1000xm5",
+      "product_name": "Sony WH-1000XM5 Headphones",
+      "brand": "Sony",
+      "base_image_url": "https://images.unsplash.com/photo-1545127398-14699f92334b?w=800&q=80",
+      "description": "Industry-leading noise-canceling headphones with exceptional sound quality, lightweight design, and crystal-clear calls.",
+      "variants": [
+        {
+          "variant_id": "sony_xm5_default",
+          "specifications": {
+            "Type": "Over-Ear Wireless",
+            "Battery": "Up to 30 hours",
+            "Connectivity": "Bluetooth 5.2",
+            "Features": "Active Noise Cancellation",
+            "Weight": "250g"
+          },
+          "offers": [
+            {
+              "seller_name": "Sony Center",
+              "price": 29990.0,
+              "rating": 4.9,
+              "rating_count": 4500,
+              "delivery_in_days": 1,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Appario Retail",
+              "price": 29500.0,
+              "rating": 4.9,
+              "rating_count": 3800,
+              "delivery_in_days": 1,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "AudioMart",
+              "price": 28500.0,
+              "rating": 4.7,
+              "rating_count": 890,
+              "delivery_in_days": 3,
+              "is_trusted_seller": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "apple_watch_series_9",
+      "product_name": "Apple Watch Series 9",
+      "brand": "Apple",
+      "base_image_url": "https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=800&q=80",
+      "description": "A powerful smartwatch with S9 SiP, brighter display, and new ways to interact for a healthier life.",
+      "variants": [
+        {
+          "variant_id": "aw9_45mm",
+          "specifications": {
+            "Case Size": "45mm",
+            "Display": "Always-On Retina",
+            "Processor": "S9 SiP",
+            "Connectivity": "GPS + Cellular",
+            "Battery": "Up to 18 hours"
+          },
+          "offers": [
+            {
+              "seller_name": "iWorld",
+              "price": 41500.0,
+              "rating": 4.9,
+              "rating_count": 950,
+              "delivery_in_days": 2,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Appario Retail",
+              "price": 41900.0,
+              "rating": 4.8,
+              "rating_count": 800,
+              "delivery_in_days": 2,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Maple Store",
+              "price": 42500.0,
+              "rating": 4.7,
+              "rating_count": 420,
+              "delivery_in_days": 3,
+              "is_trusted_seller": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "samsung_galaxy_watch_6",
+      "product_name": "Samsung Galaxy Watch 6",
+      "brand": "Samsung",
+      "base_image_url": "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=800&q=80",
+      "description": "Track wellness with a large display, advanced sleep coaching, heart monitoring, and durable design.",
+      "variants": [
+        {
+          "variant_id": "gw6_44mm",
+          "specifications": {
+            "Case Size": "44mm",
+            "Display": "1.4-inch AMOLED",
+            "Battery": "Up to 40 hours",
+            "Features": "Sleep Tracking, Heart Rate",
+            "Water Resistance": "5ATM + IP68"
+          },
+          "offers": [
+            {
+              "seller_name": "Samsung Store",
+              "price": 29999.0,
+              "rating": 4.6,
+              "rating_count": 650,
+              "delivery_in_days": 1,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Appario Retail",
+              "price": 29500.0,
+              "rating": 4.7,
+              "rating_count": 1200,
+              "delivery_in_days": 2,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "GadgetZone",
+              "price": 28999.0,
+              "rating": 4.5,
+              "rating_count": 480,
+              "delivery_in_days": 3,
+              "is_trusted_seller": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "logitech_mx_master_3s",
+      "product_name": "Logitech MX Master 3S Mouse",
+      "brand": "Logitech",
+      "base_image_url": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=800&q=80",
+      "description": "An iconic mouse remastered for comfort and precision with an 8K DPI sensor and quiet clicks.",
+      "variants": [
+        {
+          "variant_id": "mx3s_default",
+          "specifications": {
+            "Type": "Wireless Mouse",
+            "DPI": "8000",
+            "Connectivity": "Bluetooth + USB",
+            "Battery": "Up to 70 days",
+            "Buttons": "7 Programmable"
+          },
+          "offers": [
+            {
+              "seller_name": "Appario Retail",
+              "price": 9499.0,
+              "rating": 4.9,
+              "rating_count": 3200,
+              "delivery_in_days": 1,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "MDComputers",
+              "price": 9200.0,
+              "rating": 4.8,
+              "rating_count": 800,
+              "delivery_in_days": 3,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "PeripheralZone",
+              "price": 9100.0,
+              "rating": 4.7,
+              "rating_count": 620,
+              "delivery_in_days": 4,
+              "is_trusted_seller": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "sony_ps5",
+      "product_name": "Sony PlayStation 5",
+      "brand": "Sony",
+      "base_image_url": "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=800&q=80",
+      "description": "Next-gen console with ultra-high-speed SSD, haptic feedback, adaptive triggers, and 3D Audio for immersive gaming.",
+      "variants": [
+        {
+          "variant_id": "ps5_default",
+          "specifications": {
+            "Storage": "825GB SSD",
+            "Resolution": "Up to 4K 120Hz",
+            "Ray Tracing": "Yes",
+            "Controller": "DualSense",
+            "Dimensions": "390 x 104 x 260 mm"
+          },
+          "offers": [
+            {
+              "seller_name": "Sony Center",
+              "price": 54990.0,
+              "rating": 4.9,
+              "rating_count": 5000,
+              "delivery_in_days": 2,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Amazon",
+              "price": 54990.0,
+              "rating": 4.9,
+              "rating_count": 7000,
+              "delivery_in_days": 2,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Games The Shop",
+              "price": 55500.0,
+              "rating": 4.7,
+              "rating_count": 850,
+              "delivery_in_days": 3,
+              "is_trusted_seller": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "nintendo_switch_oled",
+      "product_name": "Nintendo Switch OLED",
+      "brand": "Nintendo",
+      "base_image_url": "https://images.unsplash.com/photo-1578303512597-81e6cc155b3e?w=800&q=80",
+      "description": "A portable/home hybrid gaming console with a 7-inch OLED screen, adjustable stand, and 64GB storage.",
+      "variants": [
+        {
+          "variant_id": "switch_oled_64",
+          "specifications": {
+            "Display": "7-inch OLED",
+            "Storage": "64 GB",
+            "Battery": "4.5 - 9 hours",
+            "Connectivity": "Wi-Fi + LAN",
+            "Audio": "Enhanced speakers"
+          },
+          "offers": [
+            {
+              "seller_name": "Games The Shop",
+              "price": 30500.0,
+              "rating": 4.8,
+              "rating_count": 600,
+              "delivery_in_days": 3,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "GlobalElectronics",
+              "price": 29990.0,
+              "rating": 4.7,
+              "rating_count": 950,
+              "delivery_in_days": 2,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "RetailHub",
+              "price": 30750.0,
+              "rating": 4.6,
+              "rating_count": 320,
+              "delivery_in_days": 4,
+              "is_trusted_seller": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "bose_qc_ultra_earbuds",
+      "product_name": "Bose QuietComfort Ultra Earbuds",
+      "brand": "Bose",
+      "base_image_url": "https://images.unsplash.com/photo-1598331668826-20cecc596b86?w=800&q=80",
+      "description": "True wireless earbuds with world-class noise cancellation and personalized sound via CustomTune.",
+      "variants": [
+        {
+          "variant_id": "bose_qc_ultra_16",
+          "specifications": {
+            "Type": "True Wireless In-Ear",
+            "Battery": "Up to 6 hours",
+            "Noise Cancellation": "Active",
+            "Water Resistance": "IPX4",
+            "Connectivity": "Bluetooth 5.3"
+          },
+          "offers": [
+            {
+              "seller_name": "Bose India",
+              "price": 25900.0,
+              "rating": 4.7,
+              "rating_count": 1100,
+              "delivery_in_days": 2,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Appario Retail",
+              "price": 24990.0,
+              "rating": 4.8,
+              "rating_count": 1500,
+              "delivery_in_days": 1,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "AudioMart",
+              "price": 24500.0,
+              "rating": 4.6,
+              "rating_count": 420,
+              "delivery_in_days": 3,
+              "is_trusted_seller": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "gopro_hero12_black",
+      "product_name": "GoPro HERO12 Black",
+      "brand": "GoPro",
+      "base_image_url": "https://images.unsplash.com/photo-1616858712655-ebcf890cd2eb?w=800&q=80&auto=format&fit=crop",
+      "description": "Versatile action camera with improved stabilization, high-resolution capture, and longer battery life.",
+      "variants": [
+        {
+          "variant_id": "hero12_1",
+          "specifications": {
+            "Type": "Action Camera",
+            "Video": "5.3K60 + 4K120",
+            "Photo": "27MP",
+            "Stabilization": "HyperSmooth 6.0",
+            "Waterproof": "10m"
+          },
+          "offers": [
+            {
+              "seller_name": "GoPro India",
+              "price": 46500.0,
+              "rating": 4.8,
+              "rating_count": 250,
+              "delivery_in_days": 3,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Appario Retail",
+              "price": 45000.0,
+              "rating": 4.7,
+              "rating_count": 300,
+              "delivery_in_days": 2,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "CameraWorld",
+              "price": 44890.0,
+              "rating": 4.6,
+              "rating_count": 120,
+              "delivery_in_days": 4,
+              "is_trusted_seller": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "kindle_paperwhite_16gb",
+      "product_name": "Kindle Paperwhite (16 GB)",
+      "brand": "Amazon",
+      "base_image_url": "https://images.unsplash.com/photo-1614624532983-4ce03382d63d?w=800&q=80",
+      "description": "Now with a larger 6.8-inch display, adjustable warm light and weeks of battery life for heavy readers.",
+      "variants": [
+        {
+          "variant_id": "kindle_pw_16gb",
+          "specifications": {
+            "Storage": "16 GB",
+            "Display": "6.8-inch glare-free",
+            "Resolution": "300 ppi",
+            "Battery": "Up to 10 weeks",
+            "Waterproof": "IPX8"
+          },
+          "offers": [
+            {
+              "seller_name": "Amazon",
+              "price": 13999.0,
+              "rating": 4.8,
+              "rating_count": 25000,
+              "delivery_in_days": 1,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Appario Retail",
+              "price": 13899.0,
+              "rating": 4.8,
+              "rating_count": 18000,
+              "delivery_in_days": 1,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "BookHub",
+              "price": 13750.0,
+              "rating": 4.6,
+              "rating_count": 420,
+              "delivery_in_days": 3,
+              "is_trusted_seller": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "dji_mini_4_pro",
+      "product_name": "DJI Mini 4 Pro",
+      "brand": "DJI",
+      "base_image_url": "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&q=80",
+      "description": "A feature-packed mini drone with 4K HDR video, omnidirectional sensing and long flight times in a sub-250g frame.",
+      "variants": [
+        {
+          "variant_id": "dji_mini_4_pro_1",
+          "specifications": {
+            "Weight": "249g",
+            "Camera": "4K/60fps HDR",
+            "Flight Time": "34 minutes",
+            "Transmission": "20km OcuSync 4.0",
+            "Sensors": "Omnidirectional"
+          },
+          "offers": [
+            {
+              "seller_name": "Appario Retail",
+              "price": 109990.0,
+              "rating": 4.9,
+              "rating_count": 150,
+              "delivery_in_days": 2,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "DJI Official",
+              "price": 112000.0,
+              "rating": 4.9,
+              "rating_count": 100,
+              "delivery_in_days": 4,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "GadgetWorld",
+              "price": 110500.0,
+              "rating": 4.7,
+              "rating_count": 60,
+              "delivery_in_days": 3,
+              "is_trusted_seller": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "samsung_galaxy_tab_s9",
+      "product_name": "Samsung Galaxy Tab S9",
+      "brand": "Samsung",
+      "base_image_url": "https://images.unsplash.com/photo-1561154464-82e9adf32764?w=800&q=80",
+      "description": "A premium tablet for productivity and creativity with S Pen support and Dynamic AMOLED display.",
+      "variants": [
+        {
+          "variant_id": "tab_s9_128",
+          "specifications": {
+            "Display": "11-inch Dynamic AMOLED 2X",
+            "RAM": "8GB",
+            "Storage": "128GB",
+            "Processor": "Snapdragon 8 Gen 2",
+            "S Pen": "Included"
+          },
+          "offers": [
+            {
+              "seller_name": "Samsung Store",
+              "price": 72999.0,
+              "rating": 4.8,
+              "rating_count": 800,
+              "delivery_in_days": 2,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Appario Retail",
+              "price": 71999.0,
+              "rating": 4.9,
+              "rating_count": 1100,
+              "delivery_in_days": 1,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "RetailHub",
+              "price": 73500.0,
+              "rating": 4.6,
+              "rating_count": 320,
+              "delivery_in_days": 3,
+              "is_trusted_seller": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "xbox_series_x",
+      "product_name": "Xbox Series X",
+      "brand": "Microsoft",
+      "base_image_url": "https://images.unsplash.com/photo-1621259182978-fbf93132d53d?w=800&q=80",
+      "description": "Powerful console with custom SSD, ray tracing and high frame rate support for modern games.",
+      "variants": [
+        {
+          "variant_id": "xbox_series_x_1tb",
+          "specifications": {
+            "Storage": "1TB SSD",
+            "Resolution": "Up to 4K 120fps",
+            "Ray Tracing": "Yes",
+            "Graphics": "12 TFLOPS",
+            "Dimensions": "301 x 151 x 151 mm"
+          },
+          "offers": [
+            {
+              "seller_name": "Amazon",
+              "price": 49990.0,
+              "rating": 4.9,
+              "rating_count": 4500,
+              "delivery_in_days": 2,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Games The Shop",
+              "price": 49500.0,
+              "rating": 4.8,
+              "rating_count": 900,
+              "delivery_in_days": 3,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "CloudRetail",
+              "price": 50200.0,
+              "rating": 4.6,
+              "rating_count": 220,
+              "delivery_in_days": 4,
+              "is_trusted_seller": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "fitbit_charge_6",
+      "product_name": "Fitbit Charge 6",
+      "brand": "Fitbit",
+      "base_image_url": "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=800&q=80",
+      "description": "A capable fitness tracker with heart rate monitoring, GPS and long battery life for daily tracking.",
+      "variants": [
+        {
+          "variant_id": "charge_6_default",
+          "specifications": {
+            "Type": "Fitness Tracker",
+            "Display": "Color AMOLED",
+            "Battery": "Up to 7 days",
+            "Water Resistance": "50m",
+            "Features": "GPS, Heart Rate, SpO2"
+          },
+          "offers": [
+            {
+              "seller_name": "Fitbit India",
+              "price": 15499.0,
+              "rating": 4.7,
+              "rating_count": 800,
+              "delivery_in_days": 3,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Appario Retail",
+              "price": 14999.0,
+              "rating": 4.6,
+              "rating_count": 1200,
+              "delivery_in_days": 1,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "HealthMart",
+              "price": 15150.0,
+              "rating": 4.5,
+              "rating_count": 310,
+              "delivery_in_days": 4,
+              "is_trusted_seller": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "logitech_c920_webcam",
+      "product_name": "Logitech C920 Webcam",
+      "brand": "Logitech",
+      "base_image_url": "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800&q=80",
+      "description": "Full HD webcam ideal for streaming and video calls with autofocus and dual stereo microphones.",
+      "variants": [
+        {
+          "variant_id": "c920_default",
+          "specifications": {
+            "Resolution": "1080p Full HD",
+            "Frame Rate": "30fps",
+            "Focus": "Autofocus",
+            "Microphone": "Dual stereo",
+            "Field of View": "78°"
+          },
+          "offers": [
+            {
+              "seller_name": "Appario Retail",
+              "price": 7995.0,
+              "rating": 4.8,
+              "rating_count": 25000,
+              "delivery_in_days": 1,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "MDComputers",
+              "price": 7800.0,
+              "rating": 4.7,
+              "rating_count": 5000,
+              "delivery_in_days": 3,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "CameraWorld",
+              "price": 7750.0,
+              "rating": 4.6,
+              "rating_count": 420,
+              "delivery_in_days": 4,
+              "is_trusted_seller": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "philips_hue_starter_kit",
+      "product_name": "Philips Hue Starter Kit",
+      "brand": "Philips",
+      "base_image_url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+      "description": "Smart lighting starter kit with 4 bulbs, color ambiance and a Hue Bridge to control lights from anywhere.",
+      "variants": [
+        {
+          "variant_id": "hue_starter_kit_4",
+          "specifications": {
+            "Bulbs Included": "4 x E27",
+            "Colors": "16 million",
+            "Brightness": "800 lumens each",
+            "Control": "App + Voice",
+            "Hub": "Hue Bridge included"
+          },
+          "offers": [
+            {
+              "seller_name": "Philips Store",
+              "price": 15999.0,
+              "rating": 4.8,
+              "rating_count": 2500,
+              "delivery_in_days": 3,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Appario Retail",
+              "price": 14999.0,
+              "rating": 4.9,
+              "rating_count": 4000,
+              "delivery_in_days": 1,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "SmartHome Hub",
+              "price": 15250.0,
+              "rating": 4.6,
+              "rating_count": 420,
+              "delivery_in_days": 4,
+              "is_trusted_seller": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "canon_eos_r6_mark_ii",
+      "product_name": "Canon EOS R6 Mark II",
+      "brand": "Canon",
+      "base_image_url": "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=800&q=80",
+      "description": "Full-frame mirrorless camera with 4K60p video, advanced tracking and in-body image stabilization for hybrid shooters.",
+      "variants": [
+        {
+          "variant_id": "r6_mark_ii_default",
+          "specifications": {
+            "Sensor": "24.2MP Full-Frame CMOS",
+            "Video": "4K 60p",
+            "ISO Range": "100-102400",
+            "Stabilization": "8-stop IBIS",
+            "Autofocus": "Dual Pixel CMOS AF II"
+          },
+          "offers": [
+            {
+              "seller_name": "Canon India",
+              "price": 249990.0,
+              "rating": 5.0,
+              "rating_count": 100,
+              "delivery_in_days": 4,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Appario Retail",
+              "price": 243990.0,
+              "rating": 4.9,
+              "rating_count": 150,
+              "delivery_in_days": 2,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "CameraWorld",
+              "price": 241500.0,
+              "rating": 4.7,
+              "rating_count": 60,
+              "delivery_in_days": 3,
+              "is_trusted_seller": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "irobot_roomba_j7_plus",
+      "product_name": "iRobot Roomba j7+",
+      "brand": "iRobot",
+      "base_image_url": "https://images.unsplash.com/photo-1558317374-067fb5f30001?w=800&q=80",
+      "description": "Smart robot vacuum that recognizes and avoids obstacles and auto-empties into an enclosed bag for weeks.",
+      "variants": [
+        {
+          "variant_id": "roomba_j7_plus_default",
+          "specifications": {
+            "Type": "Robot Vacuum",
+            "Auto-Empty": "Yes (60 days)",
+            "Navigation": "PrecisionVision",
+            "Runtime": "Up to 75 minutes",
+            "Features": "Obstacle Avoidance"
+          },
+          "offers": [
+            {
+              "seller_name": "iRobot India",
+              "price": 69900.0,
+              "rating": 4.7,
+              "rating_count": 500,
+              "delivery_in_days": 3,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Appario Retail",
+              "price": 68500.0,
+              "rating": 4.8,
+              "rating_count": 800,
+              "delivery_in_days": 1,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "HomeTech",
+              "price": 67999.0,
+              "rating": 4.5,
+              "rating_count": 210,
+              "delivery_in_days": 4,
+              "is_trusted_seller": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "anker_powercore_10000",
+      "product_name": "Anker PowerCore 10000",
+      "brand": "Anker",
+      "base_image_url": "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=800&q=80",
+      "description": "Compact 10,000mAh portable charger offering reliable fast charging and easy portability.",
+      "variants": [
+        {
+          "variant_id": "anker_pc_10k_default",
+          "specifications": {
+            "Capacity": "10000mAh",
+            "Output": "12W",
+            "Ports": "USB-A",
+            "Weight": "180g",
+            "Dimensions": "9.2 x 6 x 2.2 cm"
+          },
+          "offers": [
+            {
+              "seller_name": "AnkerDirect",
+              "price": 2199.0,
+              "rating": 4.8,
+              "rating_count": 15000,
+              "delivery_in_days": 3,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Appario Retail",
+              "price": 2099.0,
+              "rating": 4.7,
+              "rating_count": 25000,
+              "delivery_in_days": 1,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "MobileStore",
+              "price": 1999.0,
+              "rating": 4.5,
+              "rating_count": 4200,
+              "delivery_in_days": 4,
+              "is_trusted_seller": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "keychron_k2",
+      "product_name": "Keychron K2 Mechanical Keyboard",
+      "brand": "Keychron",
+      "base_image_url": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&q=80",
+      "description": "Popular 75% layout mechanical keyboard with Mac/Windows compatibility and customizable RGB backlighting.",
+      "variants": [
+        {
+          "variant_id": "k2_bluetooth",
+          "specifications": {
+            "Layout": "75% (84 keys)",
+            "Switches": "Gateron G Pro",
+            "Connectivity": "Bluetooth + USB-C",
+            "Battery": "Up to 240 hours",
+            "Backlight": "RGB"
+          },
+          "offers": [
+            {
+              "seller_name": "MechaKeys",
+              "price": 7899.0,
+              "rating": 4.9,
+              "rating_count": 500,
+              "delivery_in_days": 4,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "MDComputers",
+              "price": 7999.0,
+              "rating": 4.8,
+              "rating_count": 450,
+              "delivery_in_days": 2,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "PeripheralZone",
+              "price": 7699.0,
+              "rating": 4.6,
+              "rating_count": 210,
+              "delivery_in_days": 5,
+              "is_trusted_seller": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "lg_soundbar_s95q",
+      "product_name": "LG Soundbar S95Q",
+      "brand": "LG",
+      "base_image_url": "https://images.unsplash.com/photo-1761294364444-09faad3bf1e9?ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG9tZSUyMHRoZWF0ZXIlMjBzcGVha2VyfGVufDB8fDB8fHww&w=800&q=80&auto=format&fit=crop\n",
+      "description": "Premium Dolby Atmos soundbar delivering immersive multi-channel audio and deep bass for home theatre.",
+      "variants": [
+        {
+          "variant_id": "s95q_default",
+          "specifications": {
+            "Channels": "9.1.5",
+            "Connectivity": "HDMI eARC, Bluetooth",
+            "Power": "880W",
+            "Features": "Dolby Atmos, Meridian Audio",
+            "Subwoofer": "Wireless Sub"
+          },
+          "offers": [
+            {
+              "seller_name": "LG India",
+              "price": 79999.0,
+              "rating": 4.8,
+              "rating_count": 280,
+              "delivery_in_days": 3,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "AudioMart",
+              "price": 76999.0,
+              "rating": 4.6,
+              "rating_count": 120,
+              "delivery_in_days": 4,
+              "is_trusted_seller": false
+            },
+            {
+              "seller_name": "HomeAudio Pro",
+              "price": 78500.0,
+              "rating": 4.7,
+              "rating_count": 210,
+              "delivery_in_days": 2,
+              "is_trusted_seller": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "samsung_bespoke_refrigerator_375l",
+      "product_name": "Samsung Bespoke Refrigerator 375L",
+      "brand": "Samsung",
+      "base_image_url": "https://images.unsplash.com/photo-1630459065645-549fe5a56db4?w=400&q=80&auto=format&fit=crop\n",
+      "description": "Stylish Bespoke refrigerator with modular panels, energy efficient cooling and precise temperature control.",
+      "variants": [
+        {
+          "variant_id": "bespoke_375l",
+          "specifications": {
+            "Capacity": "375L",
+            "Type": "Frost Free",
+            "Energy Rating": "4 Star",
+            "Dimensions": "180 x 70 x 68 cm",
+            "Features": "Twin Cooling, Inverter Compressor"
+          },
+          "offers": [
+            {
+              "seller_name": "Samsung Store",
+              "price": 79990.0,
+              "rating": 4.7,
+              "rating_count": 320,
+              "delivery_in_days": 5,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "HomeAppliance Hub",
+              "price": 76999.0,
+              "rating": 4.5,
+              "rating_count": 150,
+              "delivery_in_days": 7,
+              "is_trusted_seller": false
+            },
+            {
+              "seller_name": "ApplianceWorld",
+              "price": 78500.0,
+              "rating": 4.6,
+              "rating_count": 210,
+              "delivery_in_days": 6,
+              "is_trusted_seller": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "mi_tv_q1_55",
+      "product_name": "Mi TV Q1 55-inch",
+      "brand": "Xiaomi",
+      "base_image_url": "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=max&q=80&w=1200\n",
+      "description": "55-inch QLED smart TV with 4K HDR, MEMC and powerful sound suitable for living room setups.",
+      "variants": [
+        {
+          "variant_id": "mi_q1_55",
+          "specifications": {
+            "Screen Size": "55-inch",
+            "Resolution": "4K UHD",
+            "Panel Type": "QLED",
+            "Refresh Rate": "60Hz",
+            "Sound": "Dolby Audio"
+          },
+          "offers": [
+            {
+              "seller_name": "Mi Official Store",
+              "price": 46999.0,
+              "rating": 4.6,
+              "rating_count": 420,
+              "delivery_in_days": 3,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Flipkart Assured",
+              "price": 45999.0,
+              "rating": 4.5,
+              "rating_count": 880,
+              "delivery_in_days": 2,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "ElectroHub",
+              "price": 47500.0,
+              "rating": 4.4,
+              "rating_count": 190,
+              "delivery_in_days": 4,
+              "is_trusted_seller": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "boat_airdopes_141",
+      "product_name": "boAt Airdopes 141",
+      "brand": "boAt",
+      "base_image_url": "https://images.unsplash.com/photo-1606841837239-c5a1a4a07af7?w=800&q=80",
+      "description": "Budget true wireless earbuds with long playback time and comfortable fit for daily use.",
+      "variants": [
+        {
+          "variant_id": "airdopes_141_default",
+          "specifications": {
+            "Type": "True Wireless In-Ear",
+            "Battery": "Up to 42 hours total",
+            "Driver": "8mm",
+            "Bluetooth": "5.1",
+            "Water Resistance": "IPX4"
+          },
+          "offers": [
+            {
+              "seller_name": "boAt Official",
+              "price": 1499.0,
+              "rating": 4.2,
+              "rating_count": 80000,
+              "delivery_in_days": 2,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Appario Retail",
+              "price": 1299.0,
+              "rating": 4.1,
+              "rating_count": 150000,
+              "delivery_in_days": 1,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "MobileBazaar",
+              "price": 1399.0,
+              "rating": 4.0,
+              "rating_count": 42000,
+              "delivery_in_days": 3,
+              "is_trusted_seller": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "msft_surface_laptop_5",
+      "product_name": "Microsoft Surface Laptop 5",
+      "brand": "Microsoft",
+      "base_image_url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&q=80",
+      "description": "Premium ultraportable laptop with a pixel-perfect touchscreen and excellent typing experience.",
+      "variants": [
+        {
+          "variant_id": "surface_laptop_5_16_512",
+          "specifications": {
+            "RAM": "16GB",
+            "Storage": "512GB SSD",
+            "Display": "13.5-inch PixelSense",
+            "Processor": "Intel Core i7-1255U",
+            "Battery": "Up to 18 hours"
+          },
+          "offers": [
+            {
+              "seller_name": "Microsoft Store",
+              "price": 104999.0,
+              "rating": 4.8,
+              "rating_count": 350,
+              "delivery_in_days": 3,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Appario Retail",
+              "price": 102999.0,
+              "rating": 4.8,
+              "rating_count": 600,
+              "delivery_in_days": 1,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "CompuWorld",
+              "price": 103490.0,
+              "rating": 4.6,
+              "rating_count": 180,
+              "delivery_in_days": 4,
+              "is_trusted_seller": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "amazon_echo_dot_5",
+      "product_name": "Amazon Echo Dot (5th Gen)",
+      "brand": "Amazon",
+      "base_image_url": "https://images.unsplash.com/photo-1543512214-318c7553f230?w=800&q=80",
+      "description": "Compact smart speaker with Alexa, delivering balanced sound and voice control for smart homes.",
+      "variants": [
+        {
+          "variant_id": "echo_dot_5_default",
+          "specifications": {
+            "Type": "Smart Speaker",
+            "Voice Assistant": "Alexa",
+            "Connectivity": "Wi-Fi + Bluetooth",
+            "Audio": "Custom full-range driver",
+            "Dimensions": "100 x 100 x 89 mm"
+          },
+          "offers": [
+            {
+              "seller_name": "Amazon",
+              "price": 4499.0,
+              "rating": 4.6,
+              "rating_count": 85000,
+              "delivery_in_days": 1,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "Appario Retail",
+              "price": 4399.0,
+              "rating": 4.7,
+              "rating_count": 65000,
+              "delivery_in_days": 1,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "SmartHome Hub",
+              "price": 4590.0,
+              "rating": 4.4,
+              "rating_count": 420,
+              "delivery_in_days": 3,
+              "is_trusted_seller": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "samsung_qn90b_65",
+      "product_name": "Samsung QN90B 65-inch Neo QLED",
+      "brand": "Samsung",
+      "base_image_url": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=800&q=80",
+      "description": "65-inch Neo QLED with Mini-LED backlight, ultra-sharp 4K HDR and smart Tizen platform for streaming.",
+      "variants": [
+        {
+          "variant_id": "qn90b_65",
+          "specifications": {
+            "Screen Size": "65-inch",
+            "Resolution": "4K UHD",
+            "Panel Type": "Neo QLED (Mini-LED)",
+            "Refresh Rate": "120Hz",
+            "Smart OS": "Tizen"
+          },
+          "offers": [
+            {
+              "seller_name": "Samsung Store",
+              "price": 179990.0,
+              "rating": 4.8,
+              "rating_count": 760,
+              "delivery_in_days": 4,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "ElectroHub",
+              "price": 175000.0,
+              "rating": 4.6,
+              "rating_count": 220,
+              "delivery_in_days": 5,
+              "is_trusted_seller": false
+            },
+            {
+              "seller_name": "LargeAppliance Co",
+              "price": 177500.0,
+              "rating": 4.7,
+              "rating_count": 410,
+              "delivery_in_days": 3,
+              "is_trusted_seller": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "sony_alpha_a7c_ii",
+      "product_name": "Sony Alpha a7C II",
+      "brand": "Sony",
+      "base_image_url": "https://images.unsplash.com/photo-1723472281045-e926a5ee9929?auto=format&fit=crop&crop=center&w=800&q=80\n",
+      "description": "Compact full-frame mirrorless camera with advanced autofocus and cinematic video capabilities.",
+      "variants": [
+        {
+          "variant_id": "a7c_ii_default",
+          "specifications": {
+            "Sensor": "Full-Frame 33MP",
+            "Video": "4K60p",
+            "Stabilization": "In-Body 5-axis",
+            "Autofocus": "Real-time Eye AF",
+            "Mount": "E-mount"
+          },
+          "offers": [
+            {
+              "seller_name": "Sony Center",
+              "price": 199990.0,
+              "rating": 4.9,
+              "rating_count": 320,
+              "delivery_in_days": 3,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "CameraWorld",
+              "price": 195500.0,
+              "rating": 4.7,
+              "rating_count": 210,
+              "delivery_in_days": 4,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "PhotoPro",
+              "price": 193999.0,
+              "rating": 4.6,
+              "rating_count": 80,
+              "delivery_in_days": 5,
+              "is_trusted_seller": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "bajaj_inverter_1ton_ac",
+      "product_name": "Bajaj Inverter AC 1 Ton",
+      "brand": "Bajaj",
+      "base_image_url": "https://images.unsplash.com/photo-1676337167616-78853693ba3a?auto=format&fit=crop&w=800&q=80",
+      "description": "Energy-efficient inverter split AC suitable for medium rooms with stabilizer-free operation and quiet cooling.",
+      "variants": [
+        {
+          "variant_id": "ac_1ton_inverter",
+          "specifications": {
+            "Capacity": "1 Ton",
+            "Type": "Inverter Split AC",
+            "Power": "1150W",
+            "Energy Rating": "5 Star",
+            "Features": "Stabilizer Free, Turbo Cooling"
+          },
+          "offers": [
+            {
+              "seller_name": "ApplianceWorld",
+              "price": 36990.0,
+              "rating": 4.5,
+              "rating_count": 420,
+              "delivery_in_days": 7,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "HomeAppliance Hub",
+              "price": 35999.0,
+              "rating": 4.3,
+              "rating_count": 210,
+              "delivery_in_days": 8,
+              "is_trusted_seller": false
+            },
+            {
+              "seller_name": "Bajaj Store",
+              "price": 37900.0,
+              "rating": 4.6,
+              "rating_count": 150,
+              "delivery_in_days": 6,
+              "is_trusted_seller": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
