@@ -1,11 +1,28 @@
 let allProducts = [];
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null; // Track login status
 
 document.addEventListener('DOMContentLoaded', () => {
     fetchProducts();
 
+    // Initial Routing - moved to after fetch
+    // handleRoute(); 
+    window.addEventListener('hashchange', handleRoute);
+
     // Auth listeners
     document.getElementById('login-form').addEventListener('submit', handleLogin);
     document.getElementById('signup-form').addEventListener('submit', handleSignup);
+
+    // Init cart
+    updateCartCount();
+
+    // Init Auth UI
+    if (currentUser) {
+        document.getElementById('auth-buttons').style.display = 'none';
+        document.getElementById('user-profile').style.display = 'flex';
+        document.getElementById('user-name').innerText = currentUser.username;
+        document.getElementById('user-initial').innerText = currentUser.username.charAt(0).toUpperCase();
+    }
 });
 
 async function fetchProducts() {
@@ -38,6 +55,9 @@ async function fetchProducts() {
 
         renderProducts(allProducts, 'product-results');
         renderProducts(allProducts, 'category-products');
+
+        // Handle initial route now that products are loaded
+        handleRoute();
     } catch (error) {
         console.error('Error fetching products:', error);
     }
@@ -67,7 +87,8 @@ function renderProducts(products, containerId) {
 
         const card = document.createElement('div');
         card.className = 'product-card';
-        card.onclick = () => viewProduct(product.id);
+        // Use hash routing instead of direct function call
+        card.onclick = () => location.hash = '#product=' + product.id;
         card.style.cursor = 'pointer';
 
         card.innerHTML = `
@@ -91,7 +112,8 @@ function renderProducts(products, containerId) {
 }
 
 function viewProduct(id) {
-    const product = allProducts.find(p => p.id === id);
+    // Loose equality to handle string/number mismatch
+    const product = allProducts.find(p => p.id == id);
     if (!product) return;
 
     document.getElementById('detail-image').src = product.image;
@@ -103,7 +125,7 @@ function viewProduct(id) {
 
     const sellerList = document.getElementById('seller-list-horizontal');
     sellerList.innerHTML = product.sellers.map(s => `
-        <div class="seller-card-detail" style="border-color: ${s.trusted ? '#8b5cf6' : '#e2e8f0'}">
+        <div class="seller-card-detail" style="border-color: #8b5cf6">
             <h4>${s.name}</h4>
             <div class="seller-price">₹${s.price.toLocaleString()}</div>
             <div class="seller-meta">⭐ ${s.rating} (${s.reviewCount})</div>
@@ -111,22 +133,128 @@ function viewProduct(id) {
             ${s.trusted
             ? '<div class="seller-meta" style="color:green; font-weight:600;">✔ Trusted</div>'
             : '<div class="seller-meta" style="color:#94a3b8">⚠️ Third Party</div>'}
-            <button class="add-to-cart-btn" onclick="event.stopPropagation(); alert('Added to cart!');">Add to Cart</button>
+            <button class="add-to-cart-btn" onclick="addToCart('${product.id}', '${s.name.replace(/'/g, "\\'")}', ${s.price})">Add to Cart</button>
         </div>
     `).join('');
 
+    // Manually showing product view, overriding routing for now while keeping hash stable or we can set it
+    // For now, let's just show the section.
+    // If we want "Back" to work properly, we rely on the fact that Back button in standard UI goes to #home or #categories
     showSection('product-view');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function addToCart(productId, sellerName, price) {
+    if (!currentUser) {
+        alert("Please login to add items to cart!");
+        showLogin();
+        return;
+    }
+
+    const product = allProducts.find(p => p.id == productId);
+    if (!product) return;
+
+    cart.push({
+        productId: product.id,
+        name: product.name,
+        image: product.image,
+        seller: sellerName,
+        price: price
+    });
+
+    saveCart();
+    updateCartCount();
+    alert('Added to cart!');
+}
+
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    saveCart();
+    renderCart(); // Re-render cart page
+    updateCartCount();
+}
+
+function saveCart() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+function updateCartCount() {
+    document.getElementById('cart-count').innerText = cart.length;
+}
+
+function renderCart() {
+    const container = document.getElementById('cart-items');
+    container.innerHTML = '';
+
+    let subtotal = 0;
+
+    if (cart.length === 0) {
+        container.innerHTML = '<div style="text-align:center; padding:2rem; color:var(--text-dim)">Your cart is empty. <br> <a href="#categories">Start Shopping</a></div>';
+    } else {
+        cart.forEach((item, index) => {
+            subtotal += item.price;
+            const div = document.createElement('div');
+            div.className = 'cart-item';
+            div.innerHTML = `
+                <img src="${item.image}" alt="${item.name}">
+                <div class="cart-item-details">
+                    <h4>${item.name}</h4>
+                    <p>Seller: ${item.seller}</p>
+                    <div class="cart-item-price">₹${item.price.toLocaleString()}</div>
+                </div>
+                <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+            `;
+            container.appendChild(div);
+        });
+    }
+
+    const tax = subtotal * 0.18;
+    const total = subtotal + tax;
+
+    document.getElementById('cart-subtotal').innerText = '₹' + subtotal.toLocaleString();
+    document.getElementById('cart-tax').innerText = '₹' + tax.toLocaleString();
+    document.getElementById('cart-total').innerText = '₹' + total.toLocaleString();
+}
+
+function handleRoute() {
+    const hash = window.location.hash;
+
+    // Close modals by default
+    closeModal('login-modal');
+    closeModal('signup-modal');
+
+    if (hash === '#categories') {
+        showSection('categories');
+    } else if (hash === '#login') {
+        showSection('home'); // Show home behind modal
+        showLogin();
+    } else if (hash === '#signup') {
+        showSection('home'); // Show home behind modal
+        showSignup();
+    } else if (hash === '#cart') {
+        showSection('cart');
+        renderCart();
+    } else if (hash.startsWith('#product=')) {
+        const id = hash.split('=')[1];
+        // Use loose equality to match string id from hash with potential int id in data
+        viewProduct(id);
+    } else {
+        // Default to home for #home, #, or empty
+        showSection('home');
+    }
 }
 
 function showSection(sectionId) {
-    ['home', 'categories', 'product-view'].forEach(id => {
+    ['home', 'categories', 'product-view', 'cart'].forEach(id => {
         document.getElementById(id).classList.add('hidden-section');
         document.getElementById(id).classList.remove('active-section');
     });
 
     const target = document.getElementById(sectionId);
-    target.classList.remove('hidden-section');
-    target.classList.add('active-section');
+    if (target) {
+        target.classList.remove('hidden-section');
+        target.classList.add('active-section');
+    }
 }
 
 function handleSearch(query) {
@@ -141,7 +269,12 @@ function handleSearch(query) {
 }
 
 function filterByCategory(category) {
-    showSection('categories');
+    // If this is called, we want to ensure we are in categories view
+    // The HTML onclicks set location.hash = '#categories' BEFORE calling this, 
+    // or we can rely on this function to just filter.
+    // Given the HTML change, hash is set.
+
+    // We just need to filter the products now.
     if (category === 'all') {
         renderProducts(allProducts, 'category-products');
     } else {
@@ -153,25 +286,64 @@ function filterByCategory(category) {
 // Modal & Auth Logic with Error Messages
 function showLogin() {
     document.getElementById('login-modal').style.display = 'flex';
-    document.getElementById('login-msg').innerHTML = ''; // Clear msgs
+    const msgBox = document.getElementById('login-msg');
+    if (msgBox) msgBox.innerHTML = '';
 }
 function showSignup() {
     document.getElementById('signup-modal').style.display = 'flex';
-    document.getElementById('signup-msg').innerHTML = '';
+    const msgBox = document.getElementById('signup-msg');
+    if (msgBox) msgBox.innerHTML = '';
 }
 function closeModal(modalId) {
     document.getElementById(modalId).style.display = 'none';
 }
 function switchModal(closeId, openId) {
+    // This function is less needed with hash routing but kept for "switch" logic if used
+    // But since we use hrefs now, we might not need this.
+    // It was used in HTML: onclick="switchModal..." -> changed to hrefs.
+    // So this might be dead code, but keeping it safe won't hurt.
     closeModal(closeId);
-    document.getElementById(openId).style.display = 'flex';
-    document.getElementById(openId === 'login-modal' ? 'login-msg' : 'signup-msg').innerHTML = '';
+    if (openId === 'login-modal') location.hash = '#login';
+    if (openId === 'signup-modal') location.hash = '#signup';
 }
 
+function toggleProfileMenu() {
+    const start = document.getElementById('profile-dropdown');
+    start.classList.toggle('show');
+}
+
+// Close dropdown when clicking outside
+window.addEventListener('click', (e) => {
+    if (!e.target.closest('#user-profile')) {
+        const dropdown = document.getElementById('profile-dropdown');
+        // Only if it exists
+        if (dropdown) dropdown.classList.remove('show');
+    }
+});
+
 function logout() {
-    document.getElementById('auth-buttons').style.display = 'inline-block';
+    document.getElementById('auth-buttons').style.display = 'flex';
     document.getElementById('user-profile').style.display = 'none';
-    alert('Logged out');
+    document.getElementById('profile-dropdown').classList.remove('show');
+    document.getElementById('profile-dropdown').classList.remove('show');
+    location.hash = '#home'; // Reset to home
+    currentUser = null; // Clear session
+    localStorage.removeItem('currentUser'); // Clear persisted session
+    cart = [];
+    saveCart();
+    updateCartCount();
+    alert('Logged out successfully');
+}
+
+function toggleTheme() {
+    const body = document.body;
+    const currentTheme = body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    body.setAttribute('data-theme', newTheme);
+
+    // Update button text
+    const btn = document.getElementById('theme-toggle');
+    btn.innerText = newTheme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
 }
 
 function showMessage(elementId, msg, isError) {
@@ -196,10 +368,29 @@ async function handleLogin(e) {
 
         if (res.ok) {
             closeModal('login-modal');
+
+            // Switch UI to logged-in state
             document.getElementById('auth-buttons').style.display = 'none';
-            const profile = document.getElementById('user-profile');
-            profile.style.display = 'flex';
-            document.getElementById('user-name').innerText = data.user.username;
+            document.getElementById('user-profile').style.display = 'flex';
+
+            // Update profile info
+            const username = data.user.username;
+            currentUser = { username: username }; // Set logged in user
+            localStorage.setItem('currentUser', JSON.stringify(currentUser)); // Persist session
+
+            document.getElementById('user-name').innerText = username;
+            document.getElementById('user-initial').innerText = username.charAt(0).toUpperCase();
+
+            // Load logic could be here (e.g. merge local cart with server cart)
+            updateCartCount();
+
+        } else if (res.status === 404) {
+            showMessage('login-msg', 'User not found. Redirecting to Signup...', true);
+            setTimeout(() => {
+                // Switch to signup and pre-fill email
+                switchModal('login-modal', 'signup-modal');
+                document.getElementById('signup-email').value = email;
+            }, 1500);
         } else {
             showMessage('login-msg', 'Invalid Credentials', true);
         }
@@ -228,8 +419,13 @@ async function handleSignup(e) {
         const data = await res.json();
 
         if (res.ok) {
-            showMessage('signup-msg', 'Successfully Registered!', false);
-            setTimeout(() => switchModal('signup-modal', 'login-modal'), 1500);
+            showMessage('signup-msg', 'Successfully Registered! Redirecting to Login...', false);
+            setTimeout(() => {
+                switchModal('signup-modal', 'login-modal');
+                // Pre-fill login with registered details
+                document.getElementById('login-email').value = email;
+                document.getElementById('login-password').value = password;
+            }, 1500);
         } else {
             showMessage('signup-msg', data.error || 'Invalid Details', true);
         }

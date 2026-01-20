@@ -22,10 +22,31 @@
     <nav class="glass-nav">
         <div class="logo">SleekFind</div>
         <div class="nav-links">
-            <a href="#" onclick="showSection('home')">Home</a>
-            <a href="#" onclick="showSection('categories')">Categories</a>
-            <a href="#" class="btn-login" onclick="showLogin()">Login</a>
-            <a href="#" class="btn-signup" onclick="showSignup()">Sign Up</a>
+            <a href="#home">Home</a>
+            <a href="#categories">Categories</a>
+            <a href="#cart" class="cart-link" title="Cart">
+                🛒 <span id="cart-count" class="cart-badge">0</span>
+            </a>
+            <div id="auth-buttons">
+                <a href="#login" class="btn-login">Login</a>
+                <a href="#signup" class="btn-signup">Sign Up</a>
+            </div>
+
+            <div id="user-profile" style="display: none;">
+                <div class="profile-icon" onclick="toggleProfileMenu()">
+                    <span id="user-initial">U</span>
+                </div>
+                <div class="profile-dropdown" id="profile-dropdown">
+                    <div class="dropdown-header">
+                        <span id="user-name">User</span>
+                    </div>
+                    <ul class="dropdown-menu">
+                        <li onclick="alert('Profile Settings coming soon!')">⚙️ Settings</li>
+                        <li onclick="toggleTheme()" id="theme-toggle">🌙 Dark Mode</li>
+                        <li onclick="logout()" class="logout-item">🚪 Logout</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -46,16 +67,16 @@
             <div class="categories-preview">
                 <h2>Popular Categories</h2>
                 <div class="category-grid">
-                    <div class="category-card" onclick="filterByCategory('mobiles')">
+                    <div class="category-card" onclick="location.hash='#categories'; filterByCategory('mobiles')">
                         <h3>📱 Mobiles</h3>
                     </div>
-                    <div class="category-card" onclick="filterByCategory('laptops')">
+                    <div class="category-card" onclick="location.hash='#categories'; filterByCategory('laptops')">
                         <h3>💻 Laptops</h3>
                     </div>
-                    <div class="category-card" onclick="filterByCategory('watches')">
+                    <div class="category-card" onclick="location.hash='#categories'; filterByCategory('watches')">
                         <h3>⌚ Watches</h3>
                     </div>
-                    <div class="category-card" onclick="filterByCategory('cameras')">
+                    <div class="category-card" onclick="location.hash='#categories'; filterByCategory('cameras')">
                         <h3>📷 Cameras</h3>
                     </div>
                 </div>
@@ -84,7 +105,7 @@
 
         <!-- Product View Section -->
         <section id="product-view" class="hidden-section">
-            <button class="back-btn" onclick="showSection('home')">← Back to Browse</button>
+            <a href="#" onclick="history.back(); return false;" class="back-btn">← Back to Browse</a>
             <div class="product-detail-container">
                 <div class="product-detail-header">
                     <img id="detail-image" src="" alt="Product Image">
@@ -105,35 +126,66 @@
                     <!-- Seller cards populated by JS -->
                 </div>
             </div>
+            </div>
+        </section>
+
+        <!-- Cart Section -->
+        <section id="cart" class="hidden-section">
+            <h2>Your Shopping Cart</h2>
+            <div class="cart-container">
+                <div id="cart-items" class="cart-items-list">
+                    <!-- Items populated by JS -->
+                </div>
+                <div class="cart-summary glass-card">
+                    <h3>Summary</h3>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="cart-subtotal">₹0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax (18%)</span>
+                        <span id="cart-tax">₹0</span>
+                    </div>
+                    <hr>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="cart-total">₹0</span>
+                    </div>
+                    <button class="checkout-btn" onclick="alert('Checkout integration coming soon!')">Proceed to
+                        Checkout</button>
+                </div>
+            </div>
         </section>
     </main>
 
     <!-- Login Modal -->
     <div id="login-modal" class="modal">
         <div class="modal-content glass-card">
-            <span class="close" onclick="closeModal('login-modal')">&times;</span>
+            <a href="#" class="close">&times;</a>
             <h2>Welcome Back</h2>
+            <div id="login-msg" class="msg-box"></div>
             <form id="login-form">
                 <input type="email" placeholder="Email" required id="login-email">
                 <input type="password" placeholder="Password" required id="login-password">
                 <button type="submit">Login</button>
             </form>
-            <p>New here? <a href="#" onclick="switchModal('login-modal', 'signup-modal')">Create an account</a></p>
+            <p>New here? <a href="#signup">Create an account</a></p>
         </div>
     </div>
 
     <!-- Signup Modal -->
     <div id="signup-modal" class="modal">
         <div class="modal-content glass-card">
-            <span class="close" onclick="closeModal('signup-modal')">&times;</span>
+            <a href="#" class="close">&times;</a>
             <h2>Join SleekFind</h2>
+            <div id="signup-msg" class="msg-box"></div>
             <form id="signup-form">
                 <input type="text" placeholder="Username" required id="signup-username">
                 <input type="email" placeholder="Email" required id="signup-email">
                 <input type="password" placeholder="Password" required id="signup-password">
                 <button type="submit">Sign Up</button>
             </form>
-            <p>Already have an account? <a href="#" onclick="switchModal('signup-modal', 'login-modal')">Login</a></p>
+            <p>Already have an account? <a href="#login">Login</a></p>
         </div>
     </div>
 

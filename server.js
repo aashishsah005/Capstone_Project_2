@@ -61,14 +61,22 @@ app.post('/api/signup', (req, res) => {
 // Login
 app.post('/api/login', (req, res) => {
     const { email, password } = req.body;
-    const query = 'SELECT * FROM users WHERE email = ? AND password_hash = ?';
-    db.execute(query, [email, password], (err, results) => {
+    // Check if user exists first
+    const userQuery = 'SELECT * FROM users WHERE email = ?';
+    db.execute(userQuery, [email], (err, results) => {
         if (err) {
             console.error('Login error:', err);
             return res.status(500).json({ error: 'Login failed' });
         }
-        if (results.length > 0) {
-            res.json({ message: 'Login successful', user: { id: results[0].id, username: results[0].username } });
+
+        if (results.length === 0) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        const user = results[0];
+        // In a real app, use bcrypt.compare(password, user.password_hash)
+        if (user.password_hash === password) {
+            res.json({ message: 'Login successful', user: { id: user.id, username: user.username } });
         } else {
             res.status(401).json({ error: 'Invalid credentials' });
         }
