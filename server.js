@@ -52,7 +52,10 @@ app.post('/api/signup', (req, res) => {
     db.query(query, [username, email, password], (err, result) => {
         if (err) {
             console.error('Signup error:', err);
-            return res.status(500).json({ error: 'Signup failed. Email might be taken.' });
+            if (err.code === 'ER_DUP_ENTRY') {
+                return res.status(409).json({ error: 'Email or Username already taken' });
+            }
+            return res.status(500).json({ error: 'Server error during registration' });
         }
         res.status(201).json({ message: 'User registered successfully' });
     });

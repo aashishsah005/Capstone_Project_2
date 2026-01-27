@@ -275,12 +275,30 @@ function filterByCategory(category) {
     // Given the HTML change, hash is set.
 
     // We just need to filter the products now.
+    const grid = document.getElementById('top-categories-grid');
+
     if (category === 'all') {
         renderProducts(allProducts, 'category-products');
+        if (grid) grid.style.display = 'grid';
     } else {
         const filtered = allProducts.filter(p => p.category.toLowerCase() === category.toLowerCase());
         renderProducts(filtered, 'category-products');
+        if (grid) grid.style.display = 'none';
     }
+}
+
+function setActivePill(element) {
+    document.querySelectorAll('.pill').forEach(btn => btn.classList.remove('active-pill'));
+    element.classList.add('active-pill');
+}
+
+function highlightPill(category) {
+    const pills = document.querySelectorAll('.pill');
+    pills.forEach(pill => {
+        if (pill.innerText.toLowerCase() === category.toLowerCase()) {
+            setActivePill(pill);
+        }
+    });
 }
 
 // Modal & Auth Logic with Error Messages
@@ -404,11 +422,17 @@ async function handleSignup(e) {
     const username = document.getElementById('signup-username').value;
     const email = document.getElementById('signup-email').value;
     const password = document.getElementById('signup-password').value;
+    const btn = e.target.querySelector('button');
+    const originalText = btn.innerText;
 
     if (!username || !email || !password) {
         showMessage('signup-msg', 'Invalid Details', true);
         return;
     }
+
+    // specific check for duplicate users (mock or real) handling
+    btn.innerText = 'Signing up...';
+    btn.disabled = true;
 
     try {
         const res = await fetch('/api/signup', {
@@ -425,12 +449,23 @@ async function handleSignup(e) {
                 // Pre-fill login with registered details
                 document.getElementById('login-email').value = email;
                 document.getElementById('login-password').value = password;
+                btn.innerText = originalText;
+                btn.disabled = false;
             }, 1500);
+        } else if (res.status === 409) {
+            showMessage('signup-msg', 'Email or Username already taken', true);
+            btn.innerText = originalText;
+            btn.disabled = false;
         } else {
-            showMessage('signup-msg', data.error || 'Invalid Details', true);
+            showMessage('signup-msg', data.error || 'Registration failed', true);
+            btn.innerText = originalText;
+            btn.disabled = false;
         }
     } catch (err) {
-        showMessage('signup-msg', 'Server Error', true);
+        console.error("Signup error:", err);
+        showMessage('signup-msg', 'Server Error. Ensure database is running.', true);
+        btn.innerText = originalText;
+        btn.disabled = false;
     }
 }
 
