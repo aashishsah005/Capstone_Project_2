@@ -93,13 +93,37 @@
                 <input type="text" id="category-search" placeholder="Filter in category..."
                     oninput="handleSearch(this.value)">
             </div>
-            <div class="category-list">
-                <button onclick="filterByCategory('all')">All</button>
-                <button onclick="filterByCategory('mobiles')">Mobiles</button>
-                <button onclick="filterByCategory('laptops')">Laptops</button>
-                <button onclick="filterByCategory('watches')">Watches</button>
-                <button onclick="filterByCategory('audio')">Audio</button>
+
+            <!-- Filter Pills -->
+            <div class="category-pills">
+                <button class="pill active-pill" onclick="filterByCategory('all'); setActivePill(this)">All</button>
+                <button class="pill" onclick="filterByCategory('mobiles'); setActivePill(this)">Mobiles</button>
+                <button class="pill" onclick="filterByCategory('laptops'); setActivePill(this)">Laptops</button>
+                <button class="pill" onclick="filterByCategory('watches'); setActivePill(this)">Watches</button>
+                <button class="pill" onclick="filterByCategory('cameras'); setActivePill(this)">Cameras</button>
+                <button class="pill" onclick="filterByCategory('audio'); setActivePill(this)">Audio</button>
             </div>
+
+            <!-- Top Categories Visual Grid (Only shown when 'all' is selected or on initial load) -->
+            <div id="top-categories-grid" class="category-grid-large">
+                <div class="cat-tile" onclick="filterByCategory('mobiles'); highlightPill('mobiles')">
+                    <span class="cat-icon">📱</span>
+                    <span>Mobiles</span>
+                </div>
+                <div class="cat-tile" onclick="filterByCategory('laptops'); highlightPill('laptops')">
+                    <span class="cat-icon">💻</span>
+                    <span>Laptops</span>
+                </div>
+                <div class="cat-tile" onclick="filterByCategory('watches'); highlightPill('watches')">
+                    <span class="cat-icon">⌚</span>
+                    <span>Watches</span>
+                </div>
+                <div class="cat-tile" onclick="filterByCategory('audio'); highlightPill('audio')">
+                    <span class="cat-icon">🎧</span>
+                    <span>Audio</span>
+                </div>
+            </div>
+
             <div id="category-products" class="product-grid"></div>
         </section>
 
