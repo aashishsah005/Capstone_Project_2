@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sidebar.css">
 </head>
 
 <body>
@@ -83,7 +84,91 @@
             </div>
 
             <!-- Product Results -->
-            <div id="product-results" class="product-grid"></div>
+            <!-- Shop Container with Sidebar -->
+            <div class="shop-container">
+                <aside class="filter-sidebar">
+                    <div class="filter-header">
+                        <h3>Filters</h3>
+                        <button id="clear-filters-btn" onclick="clearFilters()">Clear all</button>
+                    </div>
+
+                    <!-- Price Range -->
+                    <div class="filter-group">
+                        <div class="filter-title">
+                            <h4>Price Range</h4>
+                            <span class="toggle-icon">^</span>
+                        </div>
+                        <div class="filter-content">
+                            <div class="price-inputs">
+                                <input type="number" id="min-price" value="0" min="0" onchange="applyFilters()">
+                                <span>-</span>
+                                <input type="number" id="max-price" value="100000" min="0" onchange="applyFilters()">
+                            </div>
+                            <input type="range" id="price-range" class="styled-slider" min="0" max="100000" step="1000"
+                                oninput="syncPriceInput(this.value)">
+                            <p class="range-text">Range: ₹<span id="range-min">0</span> - ₹<span
+                                    id="range-max">100,000</span></p>
+                        </div>
+                    </div>
+
+                    <!-- Brands -->
+                    <div class="filter-group">
+                        <div class="filter-title">
+                            <h4>Brands</h4>
+                            <span class="toggle-icon">^</span>
+                        </div>
+                        <div class="filter-content" id="brand-filters">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="filter-group">
+                        <div class="filter-title">
+                            <h4>Categories</h4>
+                            <span class="toggle-icon">^</span>
+                        </div>
+                        <div class="filter-content" id="category-filters">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Platforms -->
+                    <div class="filter-group">
+                        <div class="filter-title">
+                            <h4>Platforms</h4>
+                            <span class="toggle-icon">^</span>
+                        </div>
+                        <div class="filter-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" value="Amazon" class="platform-filter" onchange="applyFilters()">
+                                <span class="checkmark"></span>
+                                Amazon
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" value="Flipkart" class="platform-filter"
+                                    onchange="applyFilters()">
+                                <span class="checkmark"></span>
+                                Flipkart
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" value="Croma" class="platform-filter" onchange="applyFilters()">
+                                <span class="checkmark"></span>
+                                Croma
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" value="Reliance" class="platform-filter"
+                                    onchange="applyFilters()">
+                                <span class="checkmark"></span>
+                                Reliance
+                            </label>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Product Results -->
+                <div id="product-results" class="product-grid"></div>
+            </div>
         </section>
 
         <!-- Categories Section -->

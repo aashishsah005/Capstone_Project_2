@@ -54,13 +54,130 @@ async function fetchProducts() {
         });
 
         renderProducts(allProducts, 'product-results');
+        renderProducts(allProducts, 'product-results');
         renderProducts(allProducts, 'category-products');
+
+        // Populate Sidebar Filters
+        populateFilters(allProducts);
 
         // Handle initial route now that products are loaded
         handleRoute();
     } catch (error) {
         console.error('Error fetching products:', error);
     }
+}
+
+// Filter Logic
+function populateFilters(products) {
+    const brands = [...new Set(products.map(p => p.brand))].sort();
+    const categories = [...new Set(products.map(p => p.category))].sort();
+
+    const brandContainer = document.getElementById('brand-filters');
+    const categoryContainer = document.getElementById('category-filters');
+
+    if (brandContainer) {
+        brandContainer.innerHTML = brands.map(b => `
+            <label class="custom-checkbox">
+                <input type="checkbox" value="${b}" class="brand-filter" onchange="applyFilters()">
+                <span class="checkmark"></span>
+                ${b}
+            </label>
+        `).join('');
+    }
+
+    if (categoryContainer) {
+        categoryContainer.innerHTML = categories.map(c => `
+            <label class="custom-checkbox">
+                <input type="checkbox" value="${c}" class="category-filter" onchange="applyFilters()">
+                <span class="checkmark"></span>
+                ${c.charAt(0).toUpperCase() + c.slice(1)}
+            </label>
+        `).join('');
+    }
+
+    // Set max price range dynamically based on most expensive product
+    const maxPrice = Math.max(...products.flatMap(p => p.sellers.map(s => s.price)));
+    const ceilMax = Math.ceil(maxPrice / 1000) * 1000; // Round up to nearest 1000
+
+    const maxInput = document.getElementById('max-price');
+    const rangeInput = document.getElementById('price-range');
+    const rangeMaxDisplay = document.getElementById('range-max');
+
+    if (maxInput) maxInput.value = ceilMax;
+    if (rangeInput) {
+        rangeInput.max = ceilMax;
+        rangeInput.value = ceilMax;
+    }
+    if (rangeMaxDisplay) rangeMaxDisplay.innerText = ceilMax.toLocaleString();
+}
+
+function syncPriceInput(value) {
+    document.getElementById('max-price').value = value;
+    document.getElementById('range-max').innerText = parseInt(value).toLocaleString();
+    applyFilters();
+}
+
+function applyFilters() {
+    const minPrice = parseInt(document.getElementById('min-price').value) || 0;
+    const maxPrice = parseInt(document.getElementById('max-price').value) || Infinity;
+
+    const selectedBrands = Array.from(document.querySelectorAll('.brand-filter:checked')).map(cb => cb.value);
+    const selectedCategories = Array.from(document.querySelectorAll('.category-filter:checked')).map(cb => cb.value);
+    const selectedPlatforms = Array.from(document.querySelectorAll('.platform-filter:checked')).map(cb => cb.value.toLowerCase());
+
+    const searchTerm = document.getElementById('main-search') ? document.getElementById('main-search').value.toLowerCase() : '';
+
+    const filtered = allProducts.filter(p => {
+        // Search Term Check
+        if (searchTerm) {
+            const matchesSearch = p.name.toLowerCase().includes(searchTerm) ||
+                p.category.toLowerCase().includes(searchTerm) ||
+                p.brand.toLowerCase().includes(searchTerm);
+            if (!matchesSearch) return false;
+        }
+
+        // Price Check (check if ANY seller is within range)
+        const bestPrice = Math.min(...p.sellers.map(s => s.price));
+        if (bestPrice < minPrice || bestPrice > maxPrice) return false;
+
+        // Brand Check
+        if (selectedBrands.length > 0 && !selectedBrands.includes(p.brand)) return false;
+
+        // Category Check
+        if (selectedCategories.length > 0 && !selectedCategories.includes(p.category)) return false;
+
+        // Platform Check (check if ANY seller matches selected platform)
+        if (selectedPlatforms.length > 0) {
+            const hasPlatform = p.sellers.some(s => {
+                const sellerLower = s.name.toLowerCase();
+                return selectedPlatforms.some(platform => sellerLower.includes(platform));
+            });
+            if (!hasPlatform) return false;
+        }
+
+        return true;
+    });
+
+    renderProducts(filtered, 'product-results');
+}
+
+function clearFilters() {
+    // Reset Price
+    const maxPriceInput = document.getElementById('max-price'); // Keep dynamic max? Or reset to initial?
+    // Ideally we re-run populate to reset max or store it. For now, let's just clear inputs.
+
+    document.getElementById('min-price').value = 0;
+    // We retain the current max range capability but reset the selection to full
+    const rangeInput = document.getElementById('price-range');
+    document.getElementById('max-price').value = rangeInput.max;
+    rangeInput.value = rangeInput.max;
+    document.getElementById('range-min').innerText = "0";
+    document.getElementById('range-max').innerText = parseInt(rangeInput.max).toLocaleString();
+
+    // Reset Checkboxes
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+
+    applyFilters();
 }
 
 function determineCategory(name, desc) {
@@ -258,14 +375,8 @@ function showSection(sectionId) {
 }
 
 function handleSearch(query) {
-    const term = query.toLowerCase();
-    const filtered = allProducts.filter(p =>
-        p.name.toLowerCase().includes(term) ||
-        p.category.toLowerCase().includes(term) ||
-        p.brand.toLowerCase().includes(term)
-    );
-    renderProducts(filtered, 'product-results');
-    renderProducts(filtered, 'category-products');
+    // We defer to applyFilters to handle the actual filtering combining all criteria
+    applyFilters();
 }
 
 function filterByCategory(category) {

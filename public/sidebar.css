@@ -1,0 +1,200 @@
+/* Shop Container Layout */
+.shop-container {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem 5%;
+    align-items: flex-start;
+}
+
+.filter-sidebar {
+    width: 280px;
+    background: #0f172a;
+    /* Match dark theme bg or similar */
+    padding: 1.5rem;
+    border-radius: 1rem;
+    color: white;
+    flex-shrink: 0;
+    box-shadow: var(--shadow-soft);
+    /* Using variable from common CSS */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Adjust Product Grid to take remaining space */
+.shop-container .product-grid {
+    flex: 1;
+    padding: 0 !important;
+    /* Remove padding as container has it */
+}
+
+/* Filter Header */
+.filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.filter-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+#clear-filters-btn {
+    background: none;
+    border: none;
+    color: #8b5cf6;
+    /* Primary color */
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+#clear-filters-btn:hover {
+    text-decoration: underline;
+}
+
+/* Filter Groups */
+.filter-group {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1.5rem;
+}
+
+.filter-group:last-child {
+    border-bottom: none;
+}
+
+.filter-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.filter-title h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.toggle-icon {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    transition: transform 0.3s;
+}
+
+/* Price Range */
+.price-inputs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.price-inputs input {
+    width: 100%;
+    background: #1e293b;
+    border: 1px solid #334155;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+}
+
+.styled-slider {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    background: #334155;
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: 0.5rem;
+}
+
+.styled-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #8b5cf6;
+    cursor: pointer;
+}
+
+.range-text {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-top: 0.5rem;
+}
+
+/* Checkboxes */
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    position: relative;
+    padding-left: 30px;
+    user-select: none;
+}
+
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #1e293b;
+    border: 1px solid #475569;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.custom-checkbox:hover input~.checkmark {
+    border-color: #8b5cf6;
+}
+
+.custom-checkbox input:checked~.checkmark {
+    background-color: #8b5cf6;
+    border-color: #8b5cf6;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.custom-checkbox input:checked~.checkmark:after {
+    display: block;
+}
+
+.custom-checkbox .checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .shop-container {
+        flex-direction: column;
+    }
+
+    .filter-sidebar {
+        width: 100%;
+    }
+}
