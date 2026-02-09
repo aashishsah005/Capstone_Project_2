@@ -541,7 +541,6 @@ async function handleSignup(e) {
         return;
     }
 
-    // specific check for duplicate users (mock or real) handling
     btn.innerText = 'Signing up...';
     btn.disabled = true;
 
@@ -564,7 +563,8 @@ async function handleSignup(e) {
                 btn.disabled = false;
             }, 1500);
         } else if (res.status === 409) {
-            showMessage('signup-msg', 'Email or Username already taken', true);
+            // Server returns 409 for duplicate entry (SQLite UNIQUE constraint)
+            showMessage('signup-msg', data.error || 'Email or Username already taken', true);
             btn.innerText = originalText;
             btn.disabled = false;
         } else {

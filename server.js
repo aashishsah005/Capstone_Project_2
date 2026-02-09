@@ -1,5 +1,5 @@
 const express = require('express');
-const mysql = require('mysql2');
+const sqlite3 = require('sqlite3').verbose();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const fs = require('fs');
@@ -13,22 +13,48 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Database Connection
+// Database Connection (SQLite)
+require('dotenv').config();
+const mysql = require('mysql2');
+
+// ... (other imports)
+
+// Database Connection (MySQL)
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root', // Default XAMPP/MySQL user
-    password: '', // Default XAMPP/MySQL password (empty)
-    database: 'ecommerce_analyzer'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
 });
 
 db.connect((err) => {
     if (err) {
-        console.error('Error connecting to MySQL:', err);
-        console.log('Ensure you have created the database "ecommerce_analyzer" using the schema.sql file.');
-    } else {
-        console.log('Connected to MySQL database');
+        console.error('Error connecting to MySQL database:', err.message);
+        return;
     }
+    console.log('Connected to the MySQL database.');
+    initializeDatabase();
 });
+
+function initializeDatabase() {
+    const createTableQuery = `
+        CREATE TABLE IF NOT EXISTS users (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(255) NOT NULL,
+            email VARCHAR(255) NOT NULL UNIQUE,
+            password_hash VARCHAR(255) NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    `;
+
+    db.query(createTableQuery, (err) => {
+        if (err) {
+            console.error('Error creating/verifying users table:', err.message);
+        } else {
+            console.log('Users table ready.');
+        }
+    });
+}
 
 // Routes
 
@@ -47,11 +73,12 @@ app.get('/api/products', (req, res) => {
 // Signup
 app.post('/api/signup', (req, res) => {
     const { username, email, password } = req.body;
+
     // In a real app, hash the password!
     const query = 'INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)';
-    db.query(query, [username, email, password], (err, result) => {
+    db.query(query, [username, email, password], function (err, results) {
         if (err) {
-            console.error('Signup error:', err);
+            console.error('Signup error:', err.message);
             if (err.code === 'ER_DUP_ENTRY') {
                 return res.status(409).json({ error: 'Email or Username already taken' });
             }
@@ -64,11 +91,11 @@ app.post('/api/signup', (req, res) => {
 // Login
 app.post('/api/login', (req, res) => {
     const { email, password } = req.body;
-    // Check if user exists first
+
     const userQuery = 'SELECT * FROM users WHERE email = ?';
-    db.execute(userQuery, [email], (err, results) => {
+    db.query(userQuery, [email], (err, results) => {
         if (err) {
-            console.error('Login error:', err);
+            console.error('Login error:', err.message);
             return res.status(500).json({ error: 'Login failed' });
         }
 
@@ -76,10 +103,11 @@ app.post('/api/login', (req, res) => {
             return res.status(404).json({ error: 'User not found' });
         }
 
-        const user = results[0];
+        const row = results[0];
+
         // In a real app, use bcrypt.compare(password, user.password_hash)
-        if (user.password_hash === password) {
-            res.json({ message: 'Login successful', user: { id: user.id, username: user.username } });
+        if (row.password_hash === password) {
+            res.json({ message: 'Login successful', user: { id: row.id, username: row.username } });
         } else {
             res.status(401).json({ error: 'Invalid credentials' });
         }
