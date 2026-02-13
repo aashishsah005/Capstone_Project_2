@@ -94,6 +94,20 @@
                         <button id="clear-filters-btn" onclick="clearFilters()">Clear all</button>
                     </div>
 
+                    <!-- Sort By -->
+                    <div class="filter-group">
+                        <div class="filter-title">
+                            <h4>Sort By</h4>
+                            <span class="toggle-icon">^</span>
+                        </div>
+                        <div class="filter-content sort-buttons-container">
+                            <button id="sort-asc" class="sort-btn sidebar-sort-btn" onclick="sortProducts('asc')">Low to
+                                High</button>
+                            <button id="sort-desc" class="sort-btn sidebar-sort-btn" onclick="sortProducts('desc')">High
+                                to Low</button>
+                        </div>
+                    </div>
+
                     <!-- Price Range -->
                     <div class="filter-group">
                         <div class="filter-title">
@@ -169,6 +183,8 @@
                 </aside>
 
                 <!-- Product Results -->
+                <!-- Product Results Header -->
+
                 <div id="product-results" class="product-grid"></div>
             </div>
         </section>
