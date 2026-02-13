@@ -1,6 +1,7 @@
 let allProducts = [];
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null; // Track login status
+let currentSort = 'none'; // 'none', 'asc', 'desc'
 
 document.addEventListener('DOMContentLoaded', () => {
     fetchProducts();
@@ -76,23 +77,39 @@ function populateFilters(products) {
     const categoryContainer = document.getElementById('category-filters');
 
     if (brandContainer) {
-        brandContainer.innerHTML = brands.map(b => `
-            <label class="custom-checkbox">
-                <input type="checkbox" value="${b}" class="brand-filter" onchange="applyFilters()">
-                <span class="checkmark"></span>
+        let brandHtml = `
+            <label class="custom-radio">
+                <input type="radio" name="brand" value="all" class="brand-filter" checked onchange="applyFilters()">
+                <span class="radio-mark"></span>
+                All Brands
+            </label>
+        `;
+        brandHtml += brands.map(b => `
+            <label class="custom-radio">
+                <input type="radio" name="brand" value="${b}" class="brand-filter" onchange="applyFilters()">
+                <span class="radio-mark"></span>
                 ${b}
             </label>
         `).join('');
+        brandContainer.innerHTML = brandHtml;
     }
 
     if (categoryContainer) {
-        categoryContainer.innerHTML = categories.map(c => `
-            <label class="custom-checkbox">
-                <input type="checkbox" value="${c}" class="category-filter" onchange="applyFilters()">
-                <span class="checkmark"></span>
+        let catHtml = `
+            <label class="custom-radio">
+                <input type="radio" name="category" value="all" class="category-filter" checked onchange="applyFilters()">
+                <span class="radio-mark"></span>
+                All Categories
+            </label>
+        `;
+        catHtml += categories.map(c => `
+            <label class="custom-radio">
+                <input type="radio" name="category" value="${c}" class="category-filter" onchange="applyFilters()">
+                <span class="radio-mark"></span>
                 ${c.charAt(0).toUpperCase() + c.slice(1)}
             </label>
         `).join('');
+        categoryContainer.innerHTML = catHtml;
     }
 
     // Set max price range dynamically based on most expensive product
@@ -121,13 +138,18 @@ function applyFilters() {
     const minPrice = parseInt(document.getElementById('min-price').value) || 0;
     const maxPrice = parseInt(document.getElementById('max-price').value) || Infinity;
 
-    const selectedBrands = Array.from(document.querySelectorAll('.brand-filter:checked')).map(cb => cb.value);
-    const selectedCategories = Array.from(document.querySelectorAll('.category-filter:checked')).map(cb => cb.value);
+    // Get selected radio values
+    const selectedBrandEl = document.querySelector('.brand-filter:checked');
+    const selectedCategoryEl = document.querySelector('.category-filter:checked');
+
+    const selectedBrand = selectedBrandEl ? selectedBrandEl.value : 'all';
+    const selectedCategory = selectedCategoryEl ? selectedCategoryEl.value : 'all';
+
     const selectedPlatforms = Array.from(document.querySelectorAll('.platform-filter:checked')).map(cb => cb.value.toLowerCase());
 
     const searchTerm = document.getElementById('main-search') ? document.getElementById('main-search').value.toLowerCase() : '';
 
-    const filtered = allProducts.filter(p => {
+    let filtered = allProducts.filter(p => {
         // Search Term Check
         if (searchTerm) {
             const matchesSearch = p.name.toLowerCase().includes(searchTerm) ||
@@ -141,10 +163,10 @@ function applyFilters() {
         if (bestPrice < minPrice || bestPrice > maxPrice) return false;
 
         // Brand Check
-        if (selectedBrands.length > 0 && !selectedBrands.includes(p.brand)) return false;
+        if (selectedBrand !== 'all' && p.brand !== selectedBrand) return false;
 
         // Category Check
-        if (selectedCategories.length > 0 && !selectedCategories.includes(p.category)) return false;
+        if (selectedCategory !== 'all' && p.category !== selectedCategory) return false;
 
         // Platform Check (check if ANY seller matches selected platform)
         if (selectedPlatforms.length > 0) {
@@ -158,7 +180,36 @@ function applyFilters() {
         return true;
     });
 
+    // Apply Sorting
+    if (currentSort === 'asc') {
+        filtered.sort((a, b) => {
+            const priceA = Math.min(...a.sellers.map(s => s.price));
+            const priceB = Math.min(...b.sellers.map(s => s.price));
+            return priceA - priceB;
+        });
+    } else if (currentSort === 'desc') {
+        filtered.sort((a, b) => {
+            const priceA = Math.min(...a.sellers.map(s => s.price));
+            const priceB = Math.min(...b.sellers.map(s => s.price));
+            return priceB - priceA;
+        });
+    }
+
     renderProducts(filtered, 'product-results');
+}
+
+function sortProducts(direction) {
+    currentSort = direction;
+
+    // Update UI buttons
+    document.querySelectorAll('.sort-btn').forEach(btn => btn.classList.remove('active-sort'));
+    if (direction === 'asc') {
+        document.getElementById('sort-asc').classList.add('active-sort');
+    } else if (direction === 'desc') {
+        document.getElementById('sort-desc').classList.add('active-sort');
+    }
+
+    applyFilters();
 }
 
 function clearFilters() {
@@ -174,8 +225,16 @@ function clearFilters() {
     document.getElementById('range-min').innerText = "0";
     document.getElementById('range-max').innerText = parseInt(rangeInput.max).toLocaleString();
 
-    // Reset Checkboxes
-    document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+    // Reset Radio Buttons
+    // Check the "All" options
+    const allBrand = document.querySelector('input[name="brand"][value="all"]');
+    if (allBrand) allBrand.checked = true;
+
+    const allCat = document.querySelector('input[name="category"][value="all"]');
+    if (allCat) allCat.checked = true;
+
+    // Reset Platform Checkboxes
+    document.querySelectorAll('.platform-filter').forEach(cb => cb.checked = false);
 
     applyFilters();
 }
