@@ -2,6 +2,7 @@ let allProducts = [];
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null; // Track login status
 let currentSort = 'none'; // 'none', 'asc', 'desc'
+let currentMode = 'static'; // 'static' or 'scrape'
 
 document.addEventListener('DOMContentLoaded', () => {
     fetchProducts();
@@ -26,45 +27,111 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-async function fetchProducts() {
-    try {
-        const response = await fetch('/api/products');
-        const data = await response.json();
+function setMode(mode) {
+    currentMode = mode;
+    document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
+    document.getElementById(mode + '-btn').classList.add('active');
+    
+    if (mode === 'scrape') {
+        document.getElementById('scrape-search-container').style.display = 'block';
+    } else {
+        document.getElementById('scrape-search-container').style.display = 'none';
+    }
+    
+    fetchProducts(); // Reload products based on mode
+}
 
-        // Handle new JSON structure { "products": [...] }
-        allProducts = data.products.map(p => {
-            // For simplicity, take the first variant and merge with top-level info
-            const variant = p.variants[0];
+async function scrapeProducts() {
+    const query = document.getElementById('scrape-search').value.trim();
+    if (!query) {
+        alert('Please enter a search query');
+        return;
+    }
+    
+    try {
+        const response = await fetch(`/api/scrape?query=${encodeURIComponent(query)}`);
+        const data = await response.json();
+        
+        // Transform scraped data to match the product structure
+        allProducts = data.map((item, index) => {
+            const parsedPrice = parseFloat(item.price.replace(/[^\d.]/g, ''));
             return {
-                id: p.product_id,
-                name: p.product_name,
-                brand: p.brand,
-                image: p.base_image_url,
-                description: p.description,
-                specifications: Object.entries(variant.specifications).map(([k, v]) => `${k}: ${v}`),
-                sellers: variant.offers.map(o => ({
-                    name: o.seller_name,
-                    price: o.price,
-                    rating: o.rating,
-                    reviewCount: o.rating_count,
-                    delivery: `${o.delivery_in_days} days`,
-                    trusted: o.is_trusted_seller
-                })),
-                category: determineCategory(p.product_name, p.description)
+                id: 'scraped-' + index,
+                name: item.title,
+                brand: 'Scraped',
+                image: item.image || 'https://via.placeholder.com/150',
+                description: item.title,
+                specifications: [],
+                sellers: [{
+                    name: item.site,
+                    price: isNaN(parsedPrice) ? 0 : parsedPrice,
+                    rawPrice: item.price, // Keep original for display if needed
+                    rating: 4.5,
+                    reviewCount: 100,
+                    delivery: '3-5 days',
+                    trusted: true
+                }],
+                category: determineCategory(item.title, '')
             };
         });
-
-        renderProducts(allProducts, 'product-results');
+        
         renderProducts(allProducts, 'product-results');
         renderProducts(allProducts, 'category-products');
-
-        // Populate Sidebar Filters
         populateFilters(allProducts);
-
-        // Handle initial route now that products are loaded
-        handleRoute();
     } catch (error) {
-        console.error('Error fetching products:', error);
+        console.error('Error scraping products:', error);
+        alert('Error scraping products. Please try again.');
+    }
+}
+
+async function fetchProducts() {
+    if (currentMode === 'static') {
+        try {
+            const response = await fetch('/api/products');
+            const data = await response.json();
+
+            // Handle new JSON structure { "products": [...] }
+            allProducts = data.products.map(p => {
+                // For simplicity, take the first variant and merge with top-level info
+                const variant = p.variants[0];
+                return {
+                    id: p.product_id,
+                    name: p.product_name,
+                    brand: p.brand,
+                    image: p.base_image_url,
+                    description: p.description,
+                    specifications: Object.entries(variant.specifications).map(([k, v]) => `${k}: ${v}`),
+                    sellers: variant.offers.map(o => ({
+                        name: o.seller_name,
+                        price: o.price,
+                        rating: o.rating,
+                        reviewCount: o.rating_count,
+                        delivery: `${o.delivery_in_days} days`,
+                        trusted: o.is_trusted_seller
+                    })),
+                    category: determineCategory(p.product_name, p.description)
+                };
+            });
+
+            renderProducts(allProducts, 'product-results');
+            renderProducts(allProducts, 'product-results');
+            renderProducts(allProducts, 'category-products');
+
+            // Populate Sidebar Filters
+            populateFilters(allProducts);
+
+            // Handle initial route now that products are loaded
+            handleRoute();
+        } catch (error) {
+            console.error('Error fetching products:', error);
+        }
+    } else {
+        // For scrape mode, products are loaded on search
+        allProducts = [];
+        renderProducts(allProducts, 'product-results');
+        renderProducts(allProducts, 'category-products');
+        populateFilters(allProducts);
+        handleRoute();
     }
 }
 
@@ -259,7 +326,9 @@ function renderProducts(products, containerId) {
     }
 
     products.forEach(product => {
-        const bestPrice = Math.min(...product.sellers.map(s => s.price));
+        const validPrices = product.sellers.map(s => s.price).filter(p => p > 0);
+        const bestPrice = validPrices.length > 0 ? Math.min(...validPrices) : 0;
+        const bestPriceDisplay = bestPrice > 0 ? `₹${bestPrice.toLocaleString()}` : 'Check Site';
 
         const card = document.createElement('div');
         card.className = 'product-card';
@@ -271,12 +340,12 @@ function renderProducts(products, containerId) {
             <img src="${product.image}" alt="${product.name}" class="product-img">
             <div class="product-info">
                 <h3>${product.name}</h3>
-                <p class="price">Best Price: ₹${bestPrice.toLocaleString()}</p>
+                <p class="price">Best Price: ${bestPriceDisplay}</p>
                 <div class="seller-list">
                     ${product.sellers.slice(0, 2).map(s => `
                         <div class="seller-item">
                             <span>${s.name}</span>
-                            <span>₹${s.price.toLocaleString()}</span>
+                            <span>${s.price > 0 ? '₹' + s.price.toLocaleString() : 'Check Site'}</span>
                         </div>
                     `).join('')}
                     ${product.sellers.length > 2 ? `<small style="color:var(--text-dim)">+${product.sellers.length - 2} more offers</small>` : ''}

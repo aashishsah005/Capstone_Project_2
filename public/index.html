@@ -60,10 +60,13 @@
             <div class="hero">
                 <h1>Analyze. Compare. Buy Smart.</h1>
                 <p>Compare prices across Amazon, Flipkart, and more instantly.</p>
-                <div class="search-container">
-                    <input type="text" id="main-search" placeholder="Search for products (e.g., iPhone 15)"
-                        oninput="handleSearch(this.value)">
-                    <button class="search-btn">🔍</button>
+                <div class="mode-buttons">
+                    <button id="static-btn" class="mode-btn active" onclick="setMode('static')">Static Data</button>
+                    <button id="scrape-btn" class="mode-btn" onclick="setMode('scrape')">Scrape Data</button>
+                </div>
+                <div id="scrape-search-container" class="search-container" style="display: none;">
+                    <input type="text" id="scrape-search" placeholder="Search for products to scrape (e.g., iPhone 15)">
+                    <button class="search-btn" onclick="scrapeProducts()">🔍</button>
                 </div>
             </div>
 
@@ -192,7 +195,6 @@
         <!-- Categories Section -->
         <section id="categories" class="hidden-section">
             <div class="section-header">
-                <h2>Browse Categories</h2>
                 <input type="text" id="category-search" placeholder="Filter in category..."
                     oninput="handleSearch(this.value)">
             </div>
