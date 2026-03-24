@@ -25,14 +25,15 @@
     <nav class="glass-nav">
         <div class="logo">QuickDeals</div>
         <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#categories">Categories</a>
-            <a href="#cart" class="cart-link" title="Cart">
+            <a href="index.html#home">Home</a>
+            <a href="index.html#categories">Categories</a>
+            <a href="orders.html">Orders</a>
+            <a href="#cart" class="cart-link" title="Cart" onclick="handleRoute()">
                 🛒 <span id="cart-count" class="cart-badge">0</span>
             </a>
             <div id="auth-buttons">
-                <a href="#login" class="btn-login">Login</a>
-                <a href="#signup" class="btn-signup">Sign Up</a>
+                <a href="login.html" class="btn-login">Login</a>
+                <a href="signup.html" class="btn-signup">Sign Up</a>
             </div>
 
             <div id="user-profile" style="display: none;">
@@ -194,40 +195,21 @@
 
         <!-- Categories Section -->
         <section id="categories" class="hidden-section">
-            <div class="section-header">
-                <input type="text" id="category-search" placeholder="Filter in category..."
-                    oninput="handleSearch(this.value)">
+            <div class="category-pills-container">
+                <div class="category-pills">
+                    <button class="pill active-pill" onclick="filterByCategory('all'); setActivePill(this)">All</button>
+                    <button class="pill" onclick="filterByCategory('mobiles'); setActivePill(this)">Mobiles</button>
+                    <button class="pill" onclick="filterByCategory('laptops'); setActivePill(this)">Laptops</button>
+                    <button class="pill" onclick="filterByCategory('watches'); setActivePill(this)">Watches</button>
+                    <button class="pill" onclick="filterByCategory('cameras'); setActivePill(this)">Cameras</button>
+                    <button class="pill" onclick="filterByCategory('audio'); setActivePill(this)">Audio</button>
+                </div>
+                <div class="category-search-inline">
+                    <input type="text" id="category-search" placeholder="Search in category..."
+                        oninput="handleSearch(this.value)">
+                </div>
             </div>
 
-            <!-- Filter Pills -->
-            <div class="category-pills">
-                <button class="pill active-pill" onclick="filterByCategory('all'); setActivePill(this)">All</button>
-                <button class="pill" onclick="filterByCategory('mobiles'); setActivePill(this)">Mobiles</button>
-                <button class="pill" onclick="filterByCategory('laptops'); setActivePill(this)">Laptops</button>
-                <button class="pill" onclick="filterByCategory('watches'); setActivePill(this)">Watches</button>
-                <button class="pill" onclick="filterByCategory('cameras'); setActivePill(this)">Cameras</button>
-                <button class="pill" onclick="filterByCategory('audio'); setActivePill(this)">Audio</button>
-            </div>
-
-            <!-- Top Categories Visual Grid (Only shown when 'all' is selected or on initial load) -->
-            <div id="top-categories-grid" class="category-grid-large">
-                <div class="cat-tile" onclick="filterByCategory('mobiles'); highlightPill('mobiles')">
-                    <span class="cat-icon">📱</span>
-                    <span>Mobiles</span>
-                </div>
-                <div class="cat-tile" onclick="filterByCategory('laptops'); highlightPill('laptops')">
-                    <span class="cat-icon">💻</span>
-                    <span>Laptops</span>
-                </div>
-                <div class="cat-tile" onclick="filterByCategory('watches'); highlightPill('watches')">
-                    <span class="cat-icon">⌚</span>
-                    <span>Watches</span>
-                </div>
-                <div class="cat-tile" onclick="filterByCategory('audio'); highlightPill('audio')">
-                    <span class="cat-icon">🎧</span>
-                    <span>Audio</span>
-                </div>
-            </div>
 
             <div id="category-products" class="product-grid"></div>
         </section>
@@ -280,44 +262,56 @@
                         <span>Total</span>
                         <span id="cart-total">₹0</span>
                     </div>
-                    <button class="checkout-btn" onclick="alert('Checkout integration coming soon!')">Proceed to
+                    <button class="checkout-btn" onclick="window.location.href='payment.html'">Proceed to
                         Checkout</button>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Login Modal -->
-    <div id="login-modal" class="modal">
-        <div class="modal-content glass-card">
-            <a href="#" class="close">&times;</a>
-            <h2>Welcome Back</h2>
-            <div id="login-msg" class="msg-box"></div>
-            <form id="login-form">
-                <input type="email" placeholder="Email" required id="login-email">
-                <input type="password" placeholder="Password" required id="login-password">
-                <button type="submit">Login</button>
-            </form>
-            <p>New here? <a href="#signup">Create an account</a></p>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo" style="margin-bottom: 1rem;">QuickDeals</div>
+                <p>Your one-stop destination for price analysis and smart shopping. Compare deals from top platforms
+                    instantly.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#categories" onclick="filterByCategory('mobiles')">Mobiles</a></li>
+                    <li><a href="#categories" onclick="filterByCategory('laptops')">Laptops</a></li>
+                    <li><a href="#categories" onclick="filterByCategory('watches')">Watches</a></li>
+                    <li><a href="#categories" onclick="filterByCategory('cameras')">Cameras</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Returns</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-
-    <!-- Signup Modal -->
-    <div id="signup-modal" class="modal">
-        <div class="modal-content glass-card">
-            <a href="#" class="close">&times;</a>
-            <h2>Join QuickDeals</h2>
-            <div id="signup-msg" class="msg-box"></div>
-            <form id="signup-form">
-                <input type="text" placeholder="Username" required id="signup-username">
-                <input type="email" placeholder="Email" required id="signup-email">
-                <input type="password" placeholder="Password" required id="signup-password">
-                <button type="submit">Sign Up</button>
-            </form>
-            <p>Already have an account? <a href="#login">Login</a></p>
+        <div class="footer-bottom">
+            &copy; 2026 QuickDeals. All rights reserved. Made with ❤️ for smart buyers.
         </div>
-    </div>
+    </footer>
 
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/payment.js"></script>
     <script src="script.js"></script>
 </body>
 

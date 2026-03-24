@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - QuickDeals</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="glass-nav">
+        <div class="logo" onclick="window.location.href='index.html'" style="cursor:pointer">QuickDeals</div>
+        <div class="nav-links">
+            <a href="index.html#home">Home</a>
+            <a href="index.html#categories">Categories</a>
+            <a href="orders.html">Orders</a>
+        </div>
+    </nav>
+
+    <main class="page-container">
+        <div class="page-header">
+            <h1>Complete Your Purchase</h1>
+            <p style="color:var(--text-dim)">Review your items and proceed to secure payment.</p>
+        </div>
+
+        <div class="checkout-grid">
+            <div class="checkout-main">
+                <div class="checkout-card">
+                    <h3 style="margin-bottom: 1.5rem;">Order Summary</h3>
+                    <div id="checkout-items" class="order-items-list">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="checkout-sidebar">
+                <div class="checkout-card">
+                    <h3 style="margin-bottom: 1.5rem;">Total Amount</h3>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.8rem;">
+                        <span style="color:var(--text-dim)">Subtotal</span>
+                        <span id="subtotal">₹0</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 1.5rem;">
+                        <span style="color:var(--text-dim)">GST (18%)</span>
+                        <span id="tax">₹0</span>
+                    </div>
+                    <div
+                        style="display: flex; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--border-light); font-weight: 800; font-size: 1.5rem;">
+                        <span>Total</span>
+                        <span id="total" style="color:var(--primary)">₹0</span>
+                    </div>
+                    <button class="btn-signup" id="pay-now-btn"
+                        style="width: 100%; margin-top: 2rem; padding: 1.2rem; font-size: 1.1rem;">
+                        Pay Securely with Razorpay
+                    </button>
+                    <p style="text-align: center; color:var(--text-dim); font-size: 0.8rem; margin-top: 1rem;">
+                        🔒 Secure 256-bit SSL Encrypted Payment
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo" style="margin-bottom: 1rem;">QuickDeals</div>
+                <p>Your one-stop destination for price analysis and smart shopping. Compare deals from top platforms
+                    instantly.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="index.html#categories">Mobiles</a></li>
+                    <li><a href="index.html#categories">Laptops</a></li>
+                    <li><a href="index.html#categories">Watches</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 QuickDeals. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/payment.js"></script>
+    <script>
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function updateSummary() {
+            const container = document.getElementById('checkout-items');
+            container.innerHTML = '';
+
+            if (cart.length === 0) {
+                container.innerHTML = '<p style="color:var(--text-dim)">Your cart is empty. <a href="index.html#categories">Go back to shop</a></p>';
+                document.getElementById('pay-now-btn').disabled = true;
+                return;
+            }
+
+            let subtotal = 0;
+            cart.forEach(item => {
+                subtotal += item.price;
+                const row = document.createElement('div');
+                row.className = 'order-item-row';
+                row.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="order-item-info">
+                        <h5 style="font-weight:600">${item.name}</h5>
+                        <p style="font-size:0.9rem; color:var(--text-dim)">Seller: ${item.seller}</p>
+                        <div style="color:var(--primary); font-weight:700">₹${item.price.toLocaleString()}</div>
+                    </div>
+                `;
+                container.appendChild(row);
+            });
+
+            const tax = subtotal * 0.18;
+            const total = subtotal + tax;
+
+            document.getElementById('subtotal').innerText = '₹' + subtotal.toLocaleString();
+            document.getElementById('tax').innerText = '₹' + tax.toLocaleString();
+            document.getElementById('total').innerText = '₹' + total.toLocaleString();
+        }
+
+        document.getElementById('pay-now-btn').onclick = () => {
+            window.Payment.handleCheckout(cart, () => {
+                localStorage.setItem('cart', JSON.stringify([]));
+                window.location.href = 'orders.html';
+            }, () => { });
+        };
+
+        updateSummary();
+    </script>
+</body>
+
+</html>

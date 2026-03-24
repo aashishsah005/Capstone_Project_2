@@ -19,7 +19,7 @@
           "offers": [
             {
               "seller_name": "Appario Retail",
-              "price": 79999.0,
+              "price": 79999,
               "rating": 4.8,
               "rating_count": 1250,
               "delivery_in_days": 2,
@@ -27,7 +27,7 @@
             },
             {
               "seller_name": "GadgetZone",
-              "price": 78500.0,
+              "price": 78500,
               "rating": 4.7,
               "rating_count": 890,
               "delivery_in_days": 3,
@@ -35,7 +35,7 @@
             },
             {
               "seller_name": "TechMart India",
-              "price": 77999.0,
+              "price": 77999,
               "rating": 4.5,
               "rating_count": 650,
               "delivery_in_days": 4,
@@ -64,7 +64,7 @@
           "offers": [
             {
               "seller_name": "iWorld",
-              "price": 133999.0,
+              "price": 133999,
               "rating": 4.9,
               "rating_count": 1800,
               "delivery_in_days": 2,
@@ -72,7 +72,7 @@
             },
             {
               "seller_name": "Appario Retail",
-              "price": 134900.0,
+              "price": 134900,
               "rating": 4.9,
               "rating_count": 3400,
               "delivery_in_days": 1,
@@ -80,7 +80,7 @@
             },
             {
               "seller_name": "Unicorn Store",
-              "price": 135000.0,
+              "price": 135000,
               "rating": 4.8,
               "rating_count": 950,
               "delivery_in_days": 2,
@@ -109,7 +109,7 @@
           "offers": [
             {
               "seller_name": "Flipkart Assured",
-              "price": 69999.0,
+              "price": 69999,
               "rating": 4.6,
               "rating_count": 1100,
               "delivery_in_days": 2,
@@ -117,7 +117,7 @@
             },
             {
               "seller_name": "Reliance Digital",
-              "price": 71999.0,
+              "price": 71999,
               "rating": 4.7,
               "rating_count": 1800,
               "delivery_in_days": 1,
@@ -125,7 +125,7 @@
             },
             {
               "seller_name": "Croma Store",
-              "price": 70499.0,
+              "price": 70499,
               "rating": 4.7,
               "rating_count": 890,
               "delivery_in_days": 2,
@@ -154,7 +154,7 @@
           "offers": [
             {
               "seller_name": "OnePlus Official",
-              "price": 64999.0,
+              "price": 64999,
               "rating": 4.8,
               "rating_count": 2200,
               "delivery_in_days": 2,
@@ -162,7 +162,7 @@
             },
             {
               "seller_name": "Amazon",
-              "price": 64999.0,
+              "price": 64999,
               "rating": 4.7,
               "rating_count": 3500,
               "delivery_in_days": 1,
@@ -170,7 +170,7 @@
             },
             {
               "seller_name": "Appario Retail",
-              "price": 64499.0,
+              "price": 64499,
               "rating": 4.8,
               "rating_count": 1850,
               "delivery_in_days": 2,
@@ -199,7 +199,7 @@
           "offers": [
             {
               "seller_name": "Maple Store",
-              "price": 100900.0,
+              "price": 100900,
               "rating": 4.9,
               "rating_count": 980,
               "delivery_in_days": 1,
@@ -207,7 +207,7 @@
             },
             {
               "seller_name": "Appario Retail",
-              "price": 99900.0,
+              "price": 99900,
               "rating": 4.9,
               "rating_count": 1500,
               "delivery_in_days": 1,
@@ -215,7 +215,7 @@
             },
             {
               "seller_name": "CompuIndia",
-              "price": 98999.0,
+              "price": 98999,
               "rating": 4.6,
               "rating_count": 450,
               "delivery_in_days": 3,
@@ -244,7 +244,7 @@
           "offers": [
             {
               "seller_name": "Cloudtail India",
-              "price": 185000.0,
+              "price": 185000,
               "rating": 4.8,
               "rating_count": 980,
               "delivery_in_days": 2,
@@ -252,7 +252,7 @@
             },
             {
               "seller_name": "Appario Retail",
-              "price": 186500.0,
+              "price": 186500,
               "rating": 4.8,
               "rating_count": 1250,
               "delivery_in_days": 1,
@@ -260,7 +260,7 @@
             },
             {
               "seller_name": "Dell India",
-              "price": 189990.0,
+              "price": 189990,
               "rating": 4.7,
               "rating_count": 450,
               "delivery_in_days": 3,
@@ -289,7 +289,7 @@
           "offers": [
             {
               "seller_name": "LG India",
-              "price": 149990.0,
+              "price": 149990,
               "rating": 4.9,
               "rating_count": 250,
               "delivery_in_days": 3,
@@ -297,7 +297,7 @@
             },
             {
               "seller_name": "Reliance Digital",
-              "price": 152000.0,
+              "price": 152000,
               "rating": 4.8,
               "rating_count": 400,
               "delivery_in_days": 2,
@@ -305,7 +305,7 @@
             },
             {
               "seller_name": "ElectroHub",
-              "price": 148500.0,
+              "price": 148500,
               "rating": 4.6,
               "rating_count": 180,
               "delivery_in_days": 4,
@@ -334,7 +334,7 @@
           "offers": [
             {
               "seller_name": "Sony Center",
-              "price": 29990.0,
+              "price": 29990,
               "rating": 4.9,
               "rating_count": 4500,
               "delivery_in_days": 1,
@@ -342,7 +342,7 @@
             },
             {
               "seller_name": "Appario Retail",
-              "price": 29500.0,
+              "price": 29500,
               "rating": 4.9,
               "rating_count": 3800,
               "delivery_in_days": 1,
@@ -350,7 +350,7 @@
             },
             {
               "seller_name": "AudioMart",
-              "price": 28500.0,
+              "price": 28500,
               "rating": 4.7,
               "rating_count": 890,
               "delivery_in_days": 3,
@@ -379,7 +379,7 @@
           "offers": [
             {
               "seller_name": "iWorld",
-              "price": 41500.0,
+              "price": 41500,
               "rating": 4.9,
               "rating_count": 950,
               "delivery_in_days": 2,
@@ -387,7 +387,7 @@
             },
             {
               "seller_name": "Appario Retail",
-              "price": 41900.0,
+              "price": 41900,
               "rating": 4.8,
               "rating_count": 800,
               "delivery_in_days": 2,
@@ -395,7 +395,7 @@
             },
             {
               "seller_name": "Maple Store",
-              "price": 42500.0,
+              "price": 42500,
               "rating": 4.7,
               "rating_count": 420,
               "delivery_in_days": 3,
@@ -424,7 +424,7 @@
           "offers": [
             {
               "seller_name": "Samsung Store",
-              "price": 29999.0,
+              "price": 29999,
               "rating": 4.6,
               "rating_count": 650,
               "delivery_in_days": 1,
@@ -432,7 +432,7 @@
             },
             {
               "seller_name": "Appario Retail",
-              "price": 29500.0,
+              "price": 29500,
               "rating": 4.7,
               "rating_count": 1200,
               "delivery_in_days": 2,
@@ -440,7 +440,7 @@
             },
             {
               "seller_name": "GadgetZone",
-              "price": 28999.0,
+              "price": 28999,
               "rating": 4.5,
               "rating_count": 480,
               "delivery_in_days": 3,
@@ -469,7 +469,7 @@
           "offers": [
             {
               "seller_name": "Appario Retail",
-              "price": 9499.0,
+              "price": 9499,
               "rating": 4.9,
               "rating_count": 3200,
               "delivery_in_days": 1,
@@ -477,7 +477,7 @@
             },
             {
               "seller_name": "MDComputers",
-              "price": 9200.0,
+              "price": 9200,
               "rating": 4.8,
               "rating_count": 800,
               "delivery_in_days": 3,
@@ -485,7 +485,7 @@
             },
             {
               "seller_name": "PeripheralZone",
-              "price": 9100.0,
+              "price": 9100,
               "rating": 4.7,
               "rating_count": 620,
               "delivery_in_days": 4,
@@ -514,7 +514,7 @@
           "offers": [
             {
               "seller_name": "Sony Center",
-              "price": 54990.0,
+              "price": 54990,
               "rating": 4.9,
               "rating_count": 5000,
               "delivery_in_days": 2,
@@ -522,7 +522,7 @@
             },
             {
               "seller_name": "Amazon",
-              "price": 54990.0,
+              "price": 54990,
               "rating": 4.9,
               "rating_count": 7000,
               "delivery_in_days": 2,
@@ -530,7 +530,7 @@
             },
             {
               "seller_name": "Games The Shop",
-              "price": 55500.0,
+              "price": 55500,
               "rating": 4.7,
               "rating_count": 850,
               "delivery_in_days": 3,
@@ -559,7 +559,7 @@
           "offers": [
             {
               "seller_name": "Games The Shop",
-              "price": 30500.0,
+              "price": 30500,
               "rating": 4.8,
               "rating_count": 600,
               "delivery_in_days": 3,
@@ -567,7 +567,7 @@
             },
             {
               "seller_name": "GlobalElectronics",
-              "price": 29990.0,
+              "price": 29990,
               "rating": 4.7,
               "rating_count": 950,
               "delivery_in_days": 2,
@@ -575,7 +575,7 @@
             },
             {
               "seller_name": "RetailHub",
-              "price": 30750.0,
+              "price": 30750,
               "rating": 4.6,
               "rating_count": 320,
               "delivery_in_days": 4,
@@ -604,7 +604,7 @@
           "offers": [
             {
               "seller_name": "Bose India",
-              "price": 25900.0,
+              "price": 25900,
               "rating": 4.7,
               "rating_count": 1100,
               "delivery_in_days": 2,
@@ -612,7 +612,7 @@
             },
             {
               "seller_name": "Appario Retail",
-              "price": 24990.0,
+              "price": 24990,
               "rating": 4.8,
               "rating_count": 1500,
               "delivery_in_days": 1,
@@ -620,7 +620,7 @@
             },
             {
               "seller_name": "AudioMart",
-              "price": 24500.0,
+              "price": 24500,
               "rating": 4.6,
               "rating_count": 420,
               "delivery_in_days": 3,
@@ -649,7 +649,7 @@
           "offers": [
             {
               "seller_name": "GoPro India",
-              "price": 46500.0,
+              "price": 46500,
               "rating": 4.8,
               "rating_count": 250,
               "delivery_in_days": 3,
@@ -657,7 +657,7 @@
             },
             {
               "seller_name": "Appario Retail",
-              "price": 45000.0,
+              "price": 45000,
               "rating": 4.7,
               "rating_count": 300,
               "delivery_in_days": 2,
@@ -665,7 +665,7 @@
             },
             {
               "seller_name": "CameraWorld",
-              "price": 44890.0,
+              "price": 44890,
               "rating": 4.6,
               "rating_count": 120,
               "delivery_in_days": 4,
@@ -694,7 +694,7 @@
           "offers": [
             {
               "seller_name": "Amazon",
-              "price": 13999.0,
+              "price": 13999,
               "rating": 4.8,
               "rating_count": 25000,
               "delivery_in_days": 1,
@@ -702,7 +702,7 @@
             },
             {
               "seller_name": "Appario Retail",
-              "price": 13899.0,
+              "price": 13899,
               "rating": 4.8,
               "rating_count": 18000,
               "delivery_in_days": 1,
@@ -710,7 +710,7 @@
             },
             {
               "seller_name": "BookHub",
-              "price": 13750.0,
+              "price": 13750,
               "rating": 4.6,
               "rating_count": 420,
               "delivery_in_days": 3,
@@ -739,7 +739,7 @@
           "offers": [
             {
               "seller_name": "Appario Retail",
-              "price": 109990.0,
+              "price": 109990,
               "rating": 4.9,
               "rating_count": 150,
               "delivery_in_days": 2,
@@ -747,7 +747,7 @@
             },
             {
               "seller_name": "DJI Official",
-              "price": 112000.0,
+              "price": 112000,
               "rating": 4.9,
               "rating_count": 100,
               "delivery_in_days": 4,
@@ -755,7 +755,7 @@
             },
             {
               "seller_name": "GadgetWorld",
-              "price": 110500.0,
+              "price": 110500,
               "rating": 4.7,
               "rating_count": 60,
               "delivery_in_days": 3,
@@ -784,7 +784,7 @@
           "offers": [
             {
               "seller_name": "Samsung Store",
-              "price": 72999.0,
+              "price": 72999,
               "rating": 4.8,
               "rating_count": 800,
               "delivery_in_days": 2,
@@ -792,7 +792,7 @@
             },
             {
               "seller_name": "Appario Retail",
-              "price": 71999.0,
+              "price": 71999,
               "rating": 4.9,
               "rating_count": 1100,
               "delivery_in_days": 1,
@@ -800,7 +800,7 @@
             },
             {
               "seller_name": "RetailHub",
-              "price": 73500.0,
+              "price": 73500,
               "rating": 4.6,
               "rating_count": 320,
               "delivery_in_days": 3,
@@ -829,7 +829,7 @@
           "offers": [
             {
               "seller_name": "Amazon",
-              "price": 49990.0,
+              "price": 49990,
               "rating": 4.9,
               "rating_count": 4500,
               "delivery_in_days": 2,
@@ -837,7 +837,7 @@
             },
             {
               "seller_name": "Games The Shop",
-              "price": 49500.0,
+              "price": 49500,
               "rating": 4.8,
               "rating_count": 900,
               "delivery_in_days": 3,
@@ -845,7 +845,7 @@
             },
             {
               "seller_name": "CloudRetail",
-              "price": 50200.0,
+              "price": 50200,
               "rating": 4.6,
               "rating_count": 220,
               "delivery_in_days": 4,
@@ -874,7 +874,7 @@
           "offers": [
             {
               "seller_name": "Fitbit India",
-              "price": 15499.0,
+              "price": 15499,
               "rating": 4.7,
               "rating_count": 800,
               "delivery_in_days": 3,
@@ -882,7 +882,7 @@
             },
             {
               "seller_name": "Appario Retail",
-              "price": 14999.0,
+              "price": 14999,
               "rating": 4.6,
               "rating_count": 1200,
               "delivery_in_days": 1,
@@ -890,7 +890,7 @@
             },
             {
               "seller_name": "HealthMart",
-              "price": 15150.0,
+              "price": 15150,
               "rating": 4.5,
               "rating_count": 310,
               "delivery_in_days": 4,
@@ -919,7 +919,7 @@
           "offers": [
             {
               "seller_name": "Appario Retail",
-              "price": 7995.0,
+              "price": 7995,
               "rating": 4.8,
               "rating_count": 25000,
               "delivery_in_days": 1,
@@ -927,7 +927,7 @@
             },
             {
               "seller_name": "MDComputers",
-              "price": 7800.0,
+              "price": 7800,
               "rating": 4.7,
               "rating_count": 5000,
               "delivery_in_days": 3,
@@ -935,7 +935,7 @@
             },
             {
               "seller_name": "CameraWorld",
-              "price": 7750.0,
+              "price": 7750,
               "rating": 4.6,
               "rating_count": 420,
               "delivery_in_days": 4,
@@ -964,7 +964,7 @@
           "offers": [
             {
               "seller_name": "Philips Store",
-              "price": 15999.0,
+              "price": 15999,
               "rating": 4.8,
               "rating_count": 2500,
               "delivery_in_days": 3,
@@ -972,7 +972,7 @@
             },
             {
               "seller_name": "Appario Retail",
-              "price": 14999.0,
+              "price": 14999,
               "rating": 4.9,
               "rating_count": 4000,
               "delivery_in_days": 1,
@@ -980,7 +980,7 @@
             },
             {
               "seller_name": "SmartHome Hub",
-              "price": 15250.0,
+              "price": 15250,
               "rating": 4.6,
               "rating_count": 420,
               "delivery_in_days": 4,
@@ -1009,15 +1009,15 @@
           "offers": [
             {
               "seller_name": "Canon India",
-              "price": 249990.0,
-              "rating": 5.0,
+              "price": 249990,
+              "rating": 5,
               "rating_count": 100,
               "delivery_in_days": 4,
               "is_trusted_seller": true
             },
             {
               "seller_name": "Appario Retail",
-              "price": 243990.0,
+              "price": 243990,
               "rating": 4.9,
               "rating_count": 150,
               "delivery_in_days": 2,
@@ -1025,7 +1025,7 @@
             },
             {
               "seller_name": "CameraWorld",
-              "price": 241500.0,
+              "price": 241500,
               "rating": 4.7,
               "rating_count": 60,
               "delivery_in_days": 3,
@@ -1054,7 +1054,7 @@
           "offers": [
             {
               "seller_name": "iRobot India",
-              "price": 69900.0,
+              "price": 69900,
               "rating": 4.7,
               "rating_count": 500,
               "delivery_in_days": 3,
@@ -1062,7 +1062,7 @@
             },
             {
               "seller_name": "Appario Retail",
-              "price": 68500.0,
+              "price": 68500,
               "rating": 4.8,
               "rating_count": 800,
               "delivery_in_days": 1,
@@ -1070,7 +1070,7 @@
             },
             {
               "seller_name": "HomeTech",
-              "price": 67999.0,
+              "price": 67999,
               "rating": 4.5,
               "rating_count": 210,
               "delivery_in_days": 4,
@@ -1099,7 +1099,7 @@
           "offers": [
             {
               "seller_name": "AnkerDirect",
-              "price": 2199.0,
+              "price": 2199,
               "rating": 4.8,
               "rating_count": 15000,
               "delivery_in_days": 3,
@@ -1107,7 +1107,7 @@
             },
             {
               "seller_name": "Appario Retail",
-              "price": 2099.0,
+              "price": 2099,
               "rating": 4.7,
               "rating_count": 25000,
               "delivery_in_days": 1,
@@ -1115,7 +1115,7 @@
             },
             {
               "seller_name": "MobileStore",
-              "price": 1999.0,
+              "price": 1999,
               "rating": 4.5,
               "rating_count": 4200,
               "delivery_in_days": 4,
@@ -1144,7 +1144,7 @@
           "offers": [
             {
               "seller_name": "MechaKeys",
-              "price": 7899.0,
+              "price": 7899,
               "rating": 4.9,
               "rating_count": 500,
               "delivery_in_days": 4,
@@ -1152,7 +1152,7 @@
             },
             {
               "seller_name": "MDComputers",
-              "price": 7999.0,
+              "price": 7999,
               "rating": 4.8,
               "rating_count": 450,
               "delivery_in_days": 2,
@@ -1160,7 +1160,7 @@
             },
             {
               "seller_name": "PeripheralZone",
-              "price": 7699.0,
+              "price": 7699,
               "rating": 4.6,
               "rating_count": 210,
               "delivery_in_days": 5,
@@ -1189,7 +1189,7 @@
           "offers": [
             {
               "seller_name": "LG India",
-              "price": 79999.0,
+              "price": 79999,
               "rating": 4.8,
               "rating_count": 280,
               "delivery_in_days": 3,
@@ -1197,7 +1197,7 @@
             },
             {
               "seller_name": "AudioMart",
-              "price": 76999.0,
+              "price": 76999,
               "rating": 4.6,
               "rating_count": 120,
               "delivery_in_days": 4,
@@ -1205,7 +1205,7 @@
             },
             {
               "seller_name": "HomeAudio Pro",
-              "price": 78500.0,
+              "price": 78500,
               "rating": 4.7,
               "rating_count": 210,
               "delivery_in_days": 2,
@@ -1234,7 +1234,7 @@
           "offers": [
             {
               "seller_name": "Samsung Store",
-              "price": 79990.0,
+              "price": 79990,
               "rating": 4.7,
               "rating_count": 320,
               "delivery_in_days": 5,
@@ -1242,7 +1242,7 @@
             },
             {
               "seller_name": "HomeAppliance Hub",
-              "price": 76999.0,
+              "price": 76999,
               "rating": 4.5,
               "rating_count": 150,
               "delivery_in_days": 7,
@@ -1250,7 +1250,7 @@
             },
             {
               "seller_name": "ApplianceWorld",
-              "price": 78500.0,
+              "price": 78500,
               "rating": 4.6,
               "rating_count": 210,
               "delivery_in_days": 6,
@@ -1279,7 +1279,7 @@
           "offers": [
             {
               "seller_name": "Mi Official Store",
-              "price": 46999.0,
+              "price": 46999,
               "rating": 4.6,
               "rating_count": 420,
               "delivery_in_days": 3,
@@ -1287,7 +1287,7 @@
             },
             {
               "seller_name": "Flipkart Assured",
-              "price": 45999.0,
+              "price": 45999,
               "rating": 4.5,
               "rating_count": 880,
               "delivery_in_days": 2,
@@ -1295,7 +1295,7 @@
             },
             {
               "seller_name": "ElectroHub",
-              "price": 47500.0,
+              "price": 47500,
               "rating": 4.4,
               "rating_count": 190,
               "delivery_in_days": 4,
@@ -1324,7 +1324,7 @@
           "offers": [
             {
               "seller_name": "boAt Official",
-              "price": 1499.0,
+              "price": 1499,
               "rating": 4.2,
               "rating_count": 80000,
               "delivery_in_days": 2,
@@ -1332,7 +1332,7 @@
             },
             {
               "seller_name": "Appario Retail",
-              "price": 1299.0,
+              "price": 1299,
               "rating": 4.1,
               "rating_count": 150000,
               "delivery_in_days": 1,
@@ -1340,8 +1340,8 @@
             },
             {
               "seller_name": "MobileBazaar",
-              "price": 1399.0,
-              "rating": 4.0,
+              "price": 1399,
+              "rating": 4,
               "rating_count": 42000,
               "delivery_in_days": 3,
               "is_trusted_seller": false
@@ -1369,7 +1369,7 @@
           "offers": [
             {
               "seller_name": "Microsoft Store",
-              "price": 104999.0,
+              "price": 104999,
               "rating": 4.8,
               "rating_count": 350,
               "delivery_in_days": 3,
@@ -1377,7 +1377,7 @@
             },
             {
               "seller_name": "Appario Retail",
-              "price": 102999.0,
+              "price": 102999,
               "rating": 4.8,
               "rating_count": 600,
               "delivery_in_days": 1,
@@ -1385,7 +1385,7 @@
             },
             {
               "seller_name": "CompuWorld",
-              "price": 103490.0,
+              "price": 103490,
               "rating": 4.6,
               "rating_count": 180,
               "delivery_in_days": 4,
@@ -1414,7 +1414,7 @@
           "offers": [
             {
               "seller_name": "Amazon",
-              "price": 4499.0,
+              "price": 4499,
               "rating": 4.6,
               "rating_count": 85000,
               "delivery_in_days": 1,
@@ -1422,7 +1422,7 @@
             },
             {
               "seller_name": "Appario Retail",
-              "price": 4399.0,
+              "price": 4399,
               "rating": 4.7,
               "rating_count": 65000,
               "delivery_in_days": 1,
@@ -1430,7 +1430,7 @@
             },
             {
               "seller_name": "SmartHome Hub",
-              "price": 4590.0,
+              "price": 4590,
               "rating": 4.4,
               "rating_count": 420,
               "delivery_in_days": 3,
@@ -1459,7 +1459,7 @@
           "offers": [
             {
               "seller_name": "Samsung Store",
-              "price": 179990.0,
+              "price": 179990,
               "rating": 4.8,
               "rating_count": 760,
               "delivery_in_days": 4,
@@ -1467,7 +1467,7 @@
             },
             {
               "seller_name": "ElectroHub",
-              "price": 175000.0,
+              "price": 175000,
               "rating": 4.6,
               "rating_count": 220,
               "delivery_in_days": 5,
@@ -1475,7 +1475,7 @@
             },
             {
               "seller_name": "LargeAppliance Co",
-              "price": 177500.0,
+              "price": 177500,
               "rating": 4.7,
               "rating_count": 410,
               "delivery_in_days": 3,
@@ -1504,7 +1504,7 @@
           "offers": [
             {
               "seller_name": "Sony Center",
-              "price": 199990.0,
+              "price": 199990,
               "rating": 4.9,
               "rating_count": 320,
               "delivery_in_days": 3,
@@ -1512,7 +1512,7 @@
             },
             {
               "seller_name": "CameraWorld",
-              "price": 195500.0,
+              "price": 195500,
               "rating": 4.7,
               "rating_count": 210,
               "delivery_in_days": 4,
@@ -1520,7 +1520,7 @@
             },
             {
               "seller_name": "PhotoPro",
-              "price": 193999.0,
+              "price": 193999,
               "rating": 4.6,
               "rating_count": 80,
               "delivery_in_days": 5,
@@ -1549,7 +1549,7 @@
           "offers": [
             {
               "seller_name": "ApplianceWorld",
-              "price": 36990.0,
+              "price": 36990,
               "rating": 4.5,
               "rating_count": 420,
               "delivery_in_days": 7,
@@ -1557,7 +1557,7 @@
             },
             {
               "seller_name": "HomeAppliance Hub",
-              "price": 35999.0,
+              "price": 35999,
               "rating": 4.3,
               "rating_count": 210,
               "delivery_in_days": 8,
@@ -1565,10 +1565,41 @@
             },
             {
               "seller_name": "Bajaj Store",
-              "price": 37900.0,
+              "price": 37900,
               "rating": 4.6,
               "rating_count": 150,
               "delivery_in_days": 6,
+              "is_trusted_seller": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "aashish_phone",
+      "product_name": "Aashish Mobile",
+      "brand": "NEPAL",
+      "base_image_url": "https://unsplash.com/photos/a-woman-sitting-on-the-ground-with-her-legs-crossed-V8LBP5dYz3k",
+      "description": "Good phone",
+      "variants": [
+        {
+          "variant_id": "aashish_11",
+          "specifications": {
+            "8GB": "12GB"
+          },
+          "offers": [
+            {
+              "seller_name": "HUMAN",
+              "price": 101,
+              "rating": 4.5,
+              "delivery_in_days": 2,
+              "is_trusted_seller": true
+            },
+            {
+              "seller_name": "HUMAN2",
+              "price": 1111,
+              "rating": 4,
+              "delivery_in_days": 2,
               "is_trusted_seller": true
             }
           ]

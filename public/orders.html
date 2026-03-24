@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders - QuickDeals</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="glass-nav">
+        <div class="logo" onclick="window.location.href='index.html'" style="cursor:pointer">QuickDeals</div>
+        <div class="nav-links">
+            <a href="index.html#home">Home</a>
+            <a href="index.html#categories">Categories</a>
+            <a href="orders.html" class="active-link">Orders</a>
+            <a href="#cart" class="cart-link" title="Cart" onclick="handleRoute()">
+                🛒 <span id="cart-count" class="cart-badge">0</span>
+            </a>
+            <div id="user-profile" style="display: none;">
+                <div class="profile-icon" onclick="toggleProfileMenu()">
+                    <span id="user-initial">U</span>
+                </div>
+                <div class="profile-dropdown" id="profile-dropdown">
+                    <div class="dropdown-header">
+                        <span id="user-name">User</span>
+                    </div>
+                    <ul class="dropdown-menu">
+                        <li onclick="alert('Profile Settings coming soon!')">⚙️ Settings</li>
+                        <li onclick="toggleTheme()" id="theme-toggle">🌙 Dark Mode</li>
+                        <li onclick="logout()" class="logout-item">🚪 Logout</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="page-container">
+        <div class="page-header">
+            <h1>Order History</h1>
+            <p style="color:var(--text-dim)">Track your recent purchases and view payment details.</p>
+        </div>
+
+        <div id="orders-list" class="orders-container">
+            <!-- Populated by JS -->
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo" style="margin-bottom: 1rem;">QuickDeals</div>
+                <p>Your one-stop destination for price analysis and smart shopping. Compare deals from top platforms
+                    instantly.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="index.html#categories">Mobiles</a></li>
+                    <li><a href="index.html#categories">Laptops</a></li>
+                    <li><a href="index.html#categories">Watches</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 QuickDeals. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Order Detail Modal -->
+    <div id="order-modal" class="modal">
+        <div class="modal-content order-detail-modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modal-body">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        let orders = JSON.parse(localStorage.getItem('orders')) || [];
+
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const countElement = document.getElementById('cart-count');
+            if (countElement) countElement.innerText = cart.length;
+        }
+
+        function updateProfileUI() {
+            const user = window.Auth.getUser();
+            const userProfile = document.getElementById('user-profile');
+            const userInitial = document.getElementById('user-initial');
+            const userName = document.getElementById('user-name');
+
+            if (user) {
+                if (userProfile) userProfile.style.display = 'flex';
+                if (userInitial) userInitial.innerText = user.username.charAt(0).toUpperCase();
+                if (userName) userName.innerText = user.username;
+            } else {
+                if (userProfile) userProfile.style.display = 'none';
+            }
+        }
+
+        function toggleProfileMenu() {
+            const dropdown = document.getElementById('profile-dropdown');
+            if (dropdown) dropdown.classList.toggle('show');
+        }
+
+        function logout() {
+            window.Auth.logout();
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            const btn = document.getElementById('theme-toggle');
+            if (btn) btn.innerText = newTheme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
+        }
+
+        function handleRoute() {
+            window.location.href = 'index.html#cart';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartCount();
+            updateProfileUI();
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.body.setAttribute('data-theme', savedTheme);
+            const btn = document.getElementById('theme-toggle');
+            if (btn) btn.innerText = savedTheme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
+        });
+
+        // Close dropdown when clicking outside
+        window.addEventListener('click', (e) => {
+            if (!e.target.closest('#user-profile')) {
+                const dropdown = document.getElementById('profile-dropdown');
+                if (dropdown) dropdown.classList.remove('show');
+            }
+        });
+
+        function renderOrders() {
+            const container = document.getElementById('orders-list');
+            container.innerHTML = '';
+
+            if (orders.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align:center; padding:4rem 2rem; color:var(--text-dim)">
+                        <div style="font-size: 4rem; margin-bottom: 1.5rem;">📦</div>
+                        <h3>No orders yet</h3>
+                        <p>Items you purchase will appear here.</p>
+                        <br>
+                        <a href="index.html#categories" class="btn-signup" style="display:inline-block; text-decoration:none;">Go Shopping</a>
+                    </div>
+                `;
+                return;
+            }
+
+            orders.forEach((order, index) => {
+                const card = document.createElement('div');
+                card.className = 'order-card';
+                card.style.cursor = 'pointer';
+                card.onclick = () => showOrderDetails(index);
+                card.innerHTML = `
+                    <div class="order-header">
+                        <div>
+                            <span style="color:var(--text-dim)">Order #</span>
+                            <span style="font-weight:700">${order.id.slice(-8)}</span>
+                        </div>
+                        <span style="color: green; font-weight:600">✅ Paid</span>
+                    </div>
+                    <div class="order-items-list">
+                        ${order.items.slice(0, 2).map(item => `
+                            <div class="order-item-row">
+                                <img src="${item.image}" alt="${item.name}">
+                                <div class="order-item-info">
+                                    <h5 style="font-weight:600">${item.name}</h5>
+                                    <div style="font-weight:700; color:var(--primary)">₹${item.price.toLocaleString()}</div>
+                                </div>
+                            </div>
+                        `).join('')}
+                        ${order.items.length > 2 ? `<p style="padding-left: 1rem; color: var(--text-dim)">+ ${order.items.length - 2} more items</p>` : ''}
+                    </div>
+                    <div style="margin-top: 1.5rem; text-align: right; color:var(--text-dim)">
+                        Total: <span style="color:var(--text-main); font-weight:800; font-size: 1.2rem">₹${order.total.toLocaleString()}</span>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function showOrderDetails(index) {
+            const order = orders[index];
+            const modal = document.getElementById('order-modal');
+            const body = document.getElementById('modal-body');
+
+            body.innerHTML = `
+                <div class="page-header" style="text-align: left; margin-bottom: 2rem;">
+                    <h2>Order Details</h2>
+                    <p style="color:var(--text-dim)">Transaction completed on ${order.date}</p>
+                </div>
+
+                <div class="detail-section">
+                    <h4>Payment Information</h4>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <label>Razorpay Order ID</label>
+                            <span>${order.id}</span>
+                        </div>
+                        <div class="detail-item">
+                            <label>Payment ID</label>
+                            <span>${order.paymentId}</span>
+                        </div>
+                        <div class="detail-item">
+                            <label>Total Amount</label>
+                            <span style="color:var(--primary); font-size: 1.2rem">₹${order.total.toLocaleString()}</span>
+                        </div>
+                        <div class="detail-item">
+                            <label>Status</label>
+                            <span style="color: green">Payment Successful</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-section" style="border-bottom: none;">
+                    <h4>Products</h4>
+                    <div class="order-items-list">
+                        ${order.items.map(item => `
+                            <div class="order-item-detail-row" style="margin-bottom: 2rem; border-bottom: 1px solid var(--border-light); padding-bottom: 2rem;">
+                                <div style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 1rem;">
+                                    <img src="${item.image}" alt="${item.name}" style="width: 120px; height: 120px; object-fit: contain; background: white; border-radius: 1rem; padding: 0.5rem; border: 1px solid var(--border-light);">
+                                    <div class="order-item-info">
+                                        <h3 style="margin-bottom: 0.5rem; font-size: 1.3rem;">${item.name}</h3>
+                                        <p style="color:var(--text-dim)">Seller: ${item.seller}</p>
+                                        <div style="font-weight:800; font-size: 1.4rem; margin-top: 0.5rem; color: var(--primary)">₹${item.price.toLocaleString()}</div>
+                                    </div>
+                                </div>
+                                ${item.specifications && item.specifications.length > 0 ? `
+                                    <div class="specs-box" style="margin-top: 1rem;">
+                                        <h5 style="margin-bottom: 0.8rem; color: var(--text-dim); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Specifications</h5>
+                                        <ul>
+                                            ${item.specifications.map(s => `<li>${s}</li>`).join('')}
+                                        </ul>
+                                    </div>
+                                ` : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('order-modal').style.display = 'none';
+        }
+
+        window.onclick = (event) => {
+            if (event.target == document.getElementById('order-modal')) {
+                closeModal();
+            }
+        };
+
+        renderOrders();
+    </script>
+</body>
+
+</html>

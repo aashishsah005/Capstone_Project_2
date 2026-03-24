@@ -26,13 +26,11 @@ def scrape_amazon(query):
         products = soup.select('div[data-component-type="s-search-result"]')
         
         for product in products:
-            if len(results) >= 5:
-                break
-            #title = product.select_one("h2.a-size-medium span")
-            title = product.select_one("h2 a.a-link-normal span") or product.select_one("h2 span")
-            price = product.select_one(".a-price .a-offscreen") or product.select_one(".a-price-whole")
+            #title = product.select_one("h2.a-size-medium span") gives entire product name, but fails sometimes
+            title = product.select_one("h2 span") # sometimes just returns the brand name only
+            price = product.select_one(".a-price .a-offscreen")
             image = product.select_one("img.s-image")
-            link = product.select_one("h2 a.a-link-normal") or product.select_one("a.a-link-normal")
+            link = product.select_one("a.a-link-normal")
 
             if title:
                 results.append({
@@ -42,11 +40,8 @@ def scrape_amazon(query):
                 "link": "https://www.amazon.in" + link["href"] if link else "N/A",
                 "site": "Amazon"
             })
-        
-        if len(results) >= 5:
-            break
 
-    return results[:5]
+    return results
 
 if __name__ == "__main__":
     query = sys.argv[1] if len(sys.argv) > 1 else "laptop"

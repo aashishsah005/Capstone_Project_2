@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | QuickDeals</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --sidebar-width: 280px;
+        }
+
+        body {
+            display: flex;
+            background: var(--bg-main);
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .admin-sidebar {
+            width: var(--sidebar-width);
+            background: var(--bg-card);
+            border-right: 1px solid var(--border-light);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            position: fixed;
+            height: 100vh;
+            left: 0;
+            top: 0;
+            z-index: 100;
+        }
+
+        .sidebar-brand {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .nav-item {
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-dim);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-item:hover {
+            background: var(--secondary);
+            color: var(--primary);
+        }
+
+        .nav-item.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Main Content Area */
+        .admin-main {
+            flex: 1;
+            margin-left: var(--sidebar-width);
+            padding: 3rem;
+            max-width: 1200px;
+        }
+
+        .admin-section {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .admin-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border-light);
+        }
+
+        .stat-card h4 {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        /* Users Table */
+        .users-table-container {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border-light);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            background: var(--bg-main);
+            padding: 1rem 1.5rem;
+            font-weight: 700;
+            color: var(--text-dim);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        td {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-main);
+        }
+
+        .btn-delete {
+            background: #fee2e2;
+            color: #ef4444;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-delete:hover {
+            background: #ef4444;
+            color: white;
+        }
+
+        /* Forms */
+        .form-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-soft);
+            max-width: 600px;
+        }
+
+        .input-group {
+            display: grid;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        input, textarea {
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: var(--radius-pill);
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Redundant/Inherited from original Admin */
+        .dynamic-item { background: var(--bg-main); padding: 1.5rem; border-radius: var(--radius-lg); margin-bottom: 1.5rem; position: relative; border: 1px solid var(--border-light); }
+        .remove-btn { position: absolute; top: 1rem; right: 1rem; background: #fee2e2; color: #ef4444; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; display: flex; justify-content: center; align-items: center; font-weight: bold; }
+        .add-btn { background: var(--secondary); color: var(--primary); border: 2px dashed var(--primary); padding: 1rem; border-radius: var(--radius-lg); width: 100%; cursor: pointer; font-weight: 600; transition: all 0.3s; margin-top: 1rem; }
+    </style>
+</head>
+
+<body>
+    <aside class="admin-sidebar">
+        <a href="index.html" class="sidebar-brand">QuickDeals Admin</a>
+        <ul class="nav-menu">
+            <li class="nav-item active" onclick="showSection('analytics')">📊 Analytics</li>
+            <li class="nav-item" onclick="showSection('add-product')">📦 Add Product</li>
+            <li class="nav-item" onclick="showSection('users')">👥 User Info</li>
+            <li class="nav-item" onclick="showSection('settings')">⚙️ Settings</li>
+        </ul>
+        <div style="margin-top: auto; padding-top: 2rem; border-top: 1px solid var(--border-light);">
+            <div class="nav-item" onclick="window.Auth.logout()">🚪 Logout</div>
+        </div>
+    </aside>
+
+    <main class="admin-main">
+        <!-- Analytics Section -->
+        <section id="analytics-section" class="admin-section active">
+            <h1 style="margin-bottom: 2rem;">Dashboard Overview</h1>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h4>Total Sales</h4>
+                    <div id="stat-revenue" class="stat-value">₹0</div>
+                </div>
+                <div class="stat-card">
+                    <h4>Orders</h4>
+                    <div id="stat-orders" class="stat-value">0</div>
+                </div>
+                <div class="stat-card">
+                    <h4>Total Users</h4>
+                    <div id="stat-users" class="stat-value">0</div>
+                </div>
+            </div>
+            <div style="background: white; padding: 2.5rem; border-radius: var(--radius-xl); border: 1px solid var(--border-light);">
+                <h3 style="margin-bottom: 1.5rem;">Sales Performance</h3>
+                <div style="height: 20rem; position: relative;">
+                    <canvas id="salesChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Add Product Section -->
+        <section id="add-product-section" class="admin-section">
+            <h1 style="margin-bottom: 2rem;">Add New Product</h1>
+            <div style="background: white; padding: 3rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-soft);">
+                <form id="product-form">
+                    <!-- Basic Info -->
+                    <div class="form-section" style="margin-bottom: 3rem; border-bottom: 1px solid var(--border-light); padding-bottom: 2rem;">
+                        <h3 style="margin-bottom: 1.5rem; color: var(--primary);">Basic Information</h3>
+                        <div class="input-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                            <div class="field">
+                                <label>Product ID (slug)</label>
+                                <input type="text" id="product_id" placeholder="e.g., samsung-galaxy-s24" required>
+                            </div>
+                            <div class="field">
+                                <label>Product Name</label>
+                                <input type="text" id="product_name" placeholder="e.g., Samsung Galaxy S24" required>
+                            </div>
+                        </div>
+                        <div class="input-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem;">
+                            <div class="field">
+                                <label>Brand</label>
+                                <input type="text" id="brand" placeholder="e.g., Samsung" required>
+                            </div>
+                            <div class="field">
+                                <label>Base Image URL</label>
+                                <input type="url" id="base_image_url" required>
+                            </div>
+                        </div>
+                        <div class="field" style="margin-top: 1.5rem;">
+                            <label>Description</label>
+                            <textarea id="description" rows="3" required></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Variants Section -->
+                    <div class="form-section">
+                        <h3 style="margin-bottom: 1.5rem; color: var(--primary);">Product Variants</h3>
+                        <div id="variants-container">
+                            <div class="dynamic-item variant-item" data-index="0">
+                                <div class="field">
+                                    <label>Variant ID</label>
+                                    <input type="text" class="v-id" required>
+                                </div>
+                                <div style="margin-top: 1.5rem;">
+                                    <div class="specs-list">
+                                        <div class="input-group spec-item" style="display: grid; grid-template-columns: 1fr 1fr 40px; gap: 1rem;">
+                                            <input type="text" class="s-key" placeholder="RAM">
+                                            <input type="text" class="s-val" placeholder="8GB">
+                                        </div>
+                                    </div>
+                                    <button type="button" class="add-btn" onclick="addSpec(this)">+ Add Specification</button>
+                                </div>
+                                <div style="margin-top: 1.5rem;">
+                                    <div class="offers-list"></div>
+                                    <button type="button" class="add-btn" onclick="addOffer(this)">+ Add Offer</button>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-primary" onclick="addVariant()" style="margin-top: 2rem;">+ Add Another Variant</button>
+                    </div>
+
+                    <div style="margin-top: 3rem; display: flex; align-items: center; gap: 1rem;">
+                        <button type="submit" class="btn-primary" style="width: auto; padding: 1rem 4rem;">Save Product</button>
+                        <div id="status-msg" style="font-weight: 600;"></div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- User Info Section -->
+        <section id="users-section" class="admin-section">
+            <h1 style="margin-bottom: 2rem;">User Management</h1>
+            <div class="users-table-container">
+                <table id="users-table">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th>Joined</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="users-body">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Settings Section -->
+        <section id="settings-section" class="admin-section">
+            <h1 style="margin-bottom: 2rem;">Account Settings</h1>
+            <div class="form-card">
+                <h3>Change Password</h3>
+                <form id="password-form" style="margin-top: 1.5rem;">
+                    <div class="field">
+                        <label>New Password</label>
+                        <input type="password" id="new-password" required>
+                    </div>
+                    <div class="field" style="margin-top: 1rem;">
+                        <label>Confirm Password</label>
+                        <input type="password" id="confirm-password" required>
+                    </div>
+                    <button type="submit" class="btn-primary" style="margin-top: 1.5rem;">Update Password</button>
+                    <div id="password-msg" style="margin-top: 1rem; font-weight: 600;"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Auth.checkAuth();
+            loadStats(); // Load initial stats
+        });
+    </script>
+</body>
+
+</html>
