@@ -7,6 +7,7 @@ require('dotenv').config();
 // Import Routes
 const authRoutes = require('./routes/authRoutes');
 const productRoutes = require('./routes/productRoutes');
+const feedbackRoutes = require('./routes/feedbackRoutes');
 const paymentRoutes = require('./routes/paymentRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 
@@ -23,6 +24,7 @@ app.use('/api', authRoutes);
 app.use('/api', productRoutes);
 app.use('/api', paymentRoutes);
 app.use('/api', adminRoutes);
+app.use('/api/feedback', feedbackRoutes);
 
 // Root route to serve the main frontend
 app.get('/', (req, res) => {

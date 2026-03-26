@@ -4,6 +4,7 @@ let currentSort = 'none';
 let currentMode = 'static';
 let currentCategory = 'all';
 let orders = JSON.parse(localStorage.getItem('orders')) || [];
+let currentProductId = null;
 
 document.addEventListener('DOMContentLoaded', () => {
     fetchProducts();
@@ -376,6 +377,103 @@ function viewProduct(id) {
 
     showSection('product-view');
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    currentProductId = id;
+    loadFeedback(id);
+}
+
+async function loadFeedback(productId) {
+    const feedbackList = document.getElementById('feedback-list');
+    feedbackList.innerHTML = '<p class="no-feedback">Loading feedback...</p>';
+
+    try {
+        const response = await fetch(`/api/feedback/${productId}`);
+        const feedback = await response.json();
+
+        if (feedback.length === 0) {
+            feedbackList.innerHTML = '<p class="no-feedback">No feedback yet. Be the first to share your thoughts!</p>';
+        } else {
+            feedbackList.innerHTML = feedback.map(f => `
+                <div class="feedback-card">
+                    <div class="feedback-header">
+                        <div class="feedback-user">
+                            <div class="user-avatar">${f.username.charAt(0).toUpperCase()}</div>
+                            <span class="username">${f.username}</span>
+                        </div>
+                        <span class="feedback-date">${formatRelativeTime(f.created_at)}</span>
+                    </div>
+                    <div class="feedback-content">${f.feedback}</div>
+                </div>
+            `).join('');
+        }
+    } catch (error) {
+        console.error('Error loading feedback:', error);
+        feedbackList.innerHTML = '<p class="no-feedback" style="color: #ef4444">Failed to load feedback.</p>';
+    }
+}
+
+async function submitFeedback() {
+    const feedbackText = document.getElementById('feedback-text').value.trim();
+    const statusEl = document.getElementById('feedback-status');
+
+    if (!window.Auth.isLoggedIn()) {
+        alert("Please login to post feedback!");
+        window.location.href = 'login.html';
+        return;
+    }
+
+    if (!feedbackText) {
+        statusEl.innerText = "Please enter some feedback.";
+        statusEl.style.color = "#ef4444";
+        return;
+    }
+
+    const currentUser = window.Auth.getUser();
+    const btn = document.querySelector('.submit-btn');
+    btn.disabled = true;
+    btn.innerText = 'Posting...';
+
+    try {
+        const response = await fetch('/api/feedback', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                product_id: currentProductId,
+                username: currentUser.username,
+                feedback: feedbackText
+            })
+        });
+
+        if (response.ok) {
+            document.getElementById('feedback-text').value = '';
+            statusEl.innerText = "Feedback posted!";
+            statusEl.style.color = "#10b981";
+            loadFeedback(currentProductId);
+            setTimeout(() => { statusEl.innerText = ""; }, 3000);
+        } else {
+            throw new Error('Failed to post feedback');
+        }
+    } catch (error) {
+        console.error('Error submitting feedback:', error);
+        statusEl.innerText = "Error posting feedback.";
+        statusEl.style.color = "#ef4444";
+    } finally {
+        btn.disabled = false;
+        btn.innerText = 'Post Feedback';
+    }
+}
+
+function formatRelativeTime(dateString) {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffInSeconds = Math.floor((now - date) / 1000);
+
+    if (diffInSeconds < 60) return 'Just now';
+    if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)}m ago`;
+    if (diffInSeconds < 86400) return `${Math.floor(diffInSeconds / 3600)}h ago`;
+    if (diffInSeconds < 604800) return `${Math.floor(diffInSeconds / 86400)}d ago`;
+
+    return date.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
 }
 
 function addToCart(productId, sellerName, price) {
@@ -480,10 +578,6 @@ function showSection(sectionId) {
         target.classList.remove('hidden-section');
         target.classList.add('active-section');
     }
-}
-
-function handleSearch(query) {
-    applyFilters();
 }
 
 function filterByCategory(category) {

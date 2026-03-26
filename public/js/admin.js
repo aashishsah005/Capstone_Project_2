@@ -67,7 +67,7 @@ async function loadUsers() {
             <tr>
                 <td>${user.username}</td>
                 <td>${user.email}</td>
-                <td><code style="background:#eee; padding:2px 4px; border-radius:4px;">${user.password}</code></td>
+                <td><code style="background:#eee; padding:2px 4px; border-radius:4px; color:#999">••••••••</code></td>
                 <td>${new Date(user.created_at).toLocaleDateString()}</td>
                 <td>
                     <button class="btn-delete" onclick="deleteUser(${user.id})">Remove</button>

@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const argon2 = require('argon2');
 const { getDb } = require('../config/db');
 
 const PRODUCTS_FILE = path.join(__dirname, '../data/products.json');
@@ -67,15 +68,26 @@ const getStats = (req, res) => {
     });
 };
 
-const changePassword = (req, res) => {
+const changePassword = async (req, res) => {
     const db = getDb();
     if (!db) return res.status(503).json({ error: 'Database connecting, please try again' });
     
     const { userId, newPassword } = req.body;
-    db.query('UPDATE users SET password_hash = ? WHERE id = ?', [newPassword, userId], (err, results) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.json({ message: 'Password updated successfully' });
-    });
+
+    if (!newPassword || newPassword.length < 6) {
+        return res.status(400).json({ error: 'Password must be at least 6 characters' });
+    }
+
+    try {
+        const hashedPassword = await argon2.hash(newPassword);
+        db.query('UPDATE users SET password_hash = ? WHERE id = ?', [hashedPassword, userId], (err) => {
+            if (err) return res.status(500).json({ error: err.message });
+            res.json({ message: 'Password updated successfully' });
+        });
+    } catch (err) {
+        console.error('Error hashing password during change:', err);
+        res.status(500).json({ error: 'Failed to update password' });
+    }
 };
 
 const getSalesHistory = (req, res) => {

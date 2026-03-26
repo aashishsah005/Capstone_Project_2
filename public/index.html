@@ -236,7 +236,24 @@
                 <div id="seller-list-horizontal" class="seller-horizontal-scroll">
                     <!-- Seller cards populated by JS -->
                 </div>
-            </div>
+
+                <!-- Feedback Section -->
+                <div class="feedback-container">
+                    <h3>Community Feedback</h3>
+                    <div class="feedback-form glass-card">
+                        <textarea id="feedback-text" placeholder="Share your experience with this product..."
+                            rows="3"></textarea>
+                        <div class="form-footer">
+                            <span id="feedback-status"></span>
+                            <button class="submit-btn" onclick="submitFeedback()">Post Feedback</button>
+                        </div>
+                    </div>
+
+                    <div id="feedback-list" class="feedback-list">
+                        <!-- Feedback cards populated by JS -->
+                        <p class="no-feedback">Loading feedback...</p>
+                    </div>
+                </div>
             </div>
         </section>
 

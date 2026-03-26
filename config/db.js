@@ -76,6 +76,24 @@ function initializeDatabase(connection) {
             console.log('Orders table ready.');
         }
     });
+
+    const createFeedbackTableQuery = `
+        CREATE TABLE IF NOT EXISTS product_feedback (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            product_id VARCHAR(255) NOT NULL,
+            username VARCHAR(255) NOT NULL,
+            feedback TEXT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    `;
+
+    connection.query(createFeedbackTableQuery, (err) => {
+        if (err) {
+            console.error('Error creating/verifying product_feedback table:', err.message);
+        } else {
+            console.log('Product Feedback table ready.');
+        }
+    });
 }
 
 let db;
