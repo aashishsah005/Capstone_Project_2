@@ -37,7 +37,7 @@ An E-Commerce Product Analyzer and Comparison Tool that allows users to search f
 
 1. **Clone the repository:**
    ```bash
-   git clone <repository-url>
+   git clone (https://github.com/aashishsah005/Capstone_Project_2.git)
    cd Capstone_Project_2
    ```
 
