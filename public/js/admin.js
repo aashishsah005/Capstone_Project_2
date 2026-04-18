@@ -70,6 +70,7 @@ async function loadUsers() {
                 <td><code style="background:#eee; padding:2px 4px; border-radius:4px; color:#999">••••••••</code></td>
                 <td>${new Date(user.created_at).toLocaleDateString()}</td>
                 <td>
+                    <button class="btn-password" onclick="changeUserPassword(${user.id}, '${user.username}')">Change Password</button>
                     <button class="btn-delete" onclick="deleteUser(${user.id})">Remove</button>
                 </td>
             </tr>
@@ -90,12 +91,29 @@ async function deleteUser(id) {
     }
 }
 
+async function changeUserPassword(userId, username) {
+    const newPassword = prompt(`Enter new password for user "${username}":`);
+    if (!newPassword) return;
+
+    if (newPassword.length < 6) {
+        alert('Password must be at least 6 characters long');
+        return;
+    }
+
+    try {
+        await window.API.adminChangePassword(userId, newPassword);
+        alert(`Password for user "${username}" has been updated successfully!`);
+    } catch (err) {
+        alert('Error: ' + err.message);
+    }
+}
+
 function showSection(sectionId) {
     // Hide all sections
     document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
     // Show selected section
     document.getElementById(`${sectionId}-section`).classList.add('active');
-    
+
     // Update nav active state
     document.querySelectorAll('.nav-item').forEach(item => {
         item.classList.remove('active');

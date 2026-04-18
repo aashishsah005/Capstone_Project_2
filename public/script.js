@@ -48,8 +48,27 @@ async function scrapeProducts() {
         return;
     }
 
+    const loader = document.getElementById('loader-overlay');
+    const loaderMsg = document.getElementById('loader-message');
+
     try {
+        loader.style.display = 'flex';
+        loaderMsg.innerText = 'Searching across stores...';
+
+        // Add periodic status updates for better UX during long waits
+        const statusInterval = setInterval(() => {
+            const messages = [
+                'Almost there, searching Flipkart...',
+                'Parsing Amazon results...',
+                'Comparing the best prices...',
+                'Organizing recommendations...',
+                'Finalizing product details...'
+            ];
+            loaderMsg.innerText = messages[Math.floor(Math.random() * messages.length)];
+        }, 15000);
+
         const data = await window.API.scrapeProducts(query);
+        clearInterval(statusInterval);
 
         // Transform scraped data to match the product structure
         allProducts = data.map((item, index) => {
@@ -80,6 +99,8 @@ async function scrapeProducts() {
     } catch (error) {
         console.error('Error scraping products:', error);
         alert('Error scraping products. Please try again.');
+    } finally {
+        loader.style.display = 'none';
     }
 }
 

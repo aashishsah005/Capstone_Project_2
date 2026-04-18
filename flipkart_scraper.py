@@ -55,7 +55,7 @@ def scrape_flipkart(query):
                     except: continue
                 
                 # Price selectors
-                price_selectors = ["div.Nx9_7j", "div.Nx9ZRD", "div._30jeq3", "div._25b18c ._30jeq3", "div._16Jk6d"]
+                price_selectors = ["div.Nx9_7j", "div.Nx9ZRD", "div._30jeq3", "div._25b18c ._30jeq3", "div._16Jk6d", "div.hZ3P6w", "div.hl05eU", ".Nx9_7j", "div.DeU9vF", "div.Nx9ZRD"]
                 price = "N/A"
                 for selector in price_selectors:
                     try:
@@ -63,6 +63,14 @@ def scrape_flipkart(query):
                         price = price_elem.text.strip()
                         if price and price != "N/A": break
                     except: continue
+                
+                # Fallback purely text based search for price
+                if price == "N/A":
+                    try:
+                        price_elems = p.find_elements(By.XPATH, './/*[contains(text(), "₹")]')
+                        if price_elems:
+                            price = price_elems[0].text.strip()
+                    except: pass
 
                 # If no title or price, it might not be a valid result we want to show
                 if title == "N/A" and price == "N/A":
